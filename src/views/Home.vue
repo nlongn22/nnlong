@@ -45,22 +45,34 @@ export default {
             return new Promise((resolve, reject) => {
                 let interval = setInterval(() => {
                     this.initTypewriter(string, boolean);
+                    if (this.message === "Willkommen bei meiner Website!") {
+                        resolve(this.loopPromises());
+                        clearInterval(interval);
+                    }
                     if (this.message === string) {
                         this.message = "";
                         this.index = 0;
                         resolve();
                         clearInterval(interval);
                     }
-                }, 225);
+                }, 200);
             });
+        },
+        loopPromises() {
+            this.initFunction("Hello!", true).then(() =>
+                this.initFunction("Guten Tag!", false).then(() => {
+                    this.initFunction("Welcome to my site!", true).then(() => {
+                        this.initFunction(
+                            "Willkommen bei meiner Website!",
+                            false
+                        );
+                    });
+                })
+            );
         },
     },
     mounted() {
-        this.initFunction("Hello!", true).then(() =>
-            this.initFunction("Guten Tag!", false).then(() => {
-                this.initFunction("Welcome to my site!", true);
-            })
-        );
+        this.loopPromises();
     },
 };
 </script>
