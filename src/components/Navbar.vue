@@ -21,7 +21,6 @@ import {
     LinkedinIcon,
     GithubIcon,
 } from "@zhuowenli/vue-feather-icons";
-
 export default {
     name: "Navbar",
     components: {
@@ -36,10 +35,20 @@ export default {
 * {
     font-family: "Righteous";
 }
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .navbar-container {
     position: fixed;
     z-index: 1;
     width: 100%;
+    animation-name: fade;
+    animation-duration: 1.5s;
 }
 .navbar {
     display: flex;

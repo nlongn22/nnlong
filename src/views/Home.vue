@@ -6,6 +6,7 @@
                     {{ message }}<span class="cursor">|</span>
                 </div>
             </transition>
+            <div class="scroll">Scroll</div>
         </div>
         <div class="container-right">
             <transition name="fade">
@@ -13,19 +14,18 @@
                     {{ message }}<span class="cursor">|</span>
                 </div>
             </transition>
-        </div>
-        <div class="scroll-container">
-            <div class="scroll">Scroll</div>
-            <div class="scroll-icon">
-                <i class="fas fa-long-arrow-alt-down"></i>
-            </div>
+            <arrow-down-icon size="1.5x" class="scroll-icon"></arrow-down-icon>
         </div>
     </div>
 </template>
 
 <script>
+import { ArrowDownIcon } from "@zhuowenli/vue-feather-icons";
 export default {
     name: "Home",
+    components: {
+        ArrowDownIcon,
+    },
     data() {
         return {
             interval: null,
@@ -35,17 +35,17 @@ export default {
         };
     },
     methods: {
-        initTypewriter(string, isLeft) {
+        typeWriter(string, isLeft) {
             this.isLeft = isLeft;
             let stringArray = string.split("");
             this.message += stringArray[this.index];
             this.index++;
         },
-        initFunction(string, boolean) {
+        initTypeWriter(string, boolean) {
             return new Promise((resolve, reject) => {
                 let interval = setInterval(() => {
-                    this.initTypewriter(string, boolean);
-                    if (this.message === "Willkommen bei meiner Website!") {
+                    this.typeWriter(string, boolean);
+                    if (this.message === "Herzlich Willkommen!") {
                         resolve(this.loopPromises());
                         clearInterval(interval);
                     }
@@ -55,89 +55,123 @@ export default {
                         resolve();
                         clearInterval(interval);
                     }
-                }, 200);
+                }, 175);
             });
         },
         loopPromises() {
-            this.initFunction("Hello!", true).then(() =>
-                this.initFunction("Guten Tag!", false).then(() => {
-                    this.initFunction("Welcome to my site!", true).then(() => {
-                        this.initFunction(
-                            "Willkommen bei meiner Website!",
-                            false
-                        );
+            this.initTypeWriter("Hello!", true).then(() =>
+                this.initTypeWriter("Guten Tag!", false).then(() => {
+                    this.initTypeWriter("Welcome!", true).then(() => {
+                        this.initTypeWriter("Herzlich Willkommen!", false);
                     });
                 })
             );
         },
     },
     mounted() {
-        this.loopPromises();
+        setTimeout(() => {
+            this.loopPromises();
+        }, 2750);
     },
 };
 </script>
 
-<style>
+<style scoped>
 * {
     font-family: "Righteous";
 }
 .fade-enter,
 .fade-leave-to {
     opacity: 0;
+    transition: 0.5s;
 }
 .container {
-    position: relative;
     display: flex;
     min-height: 100vh;
+}
+@keyframes slide-left-left {
+    0% {
+        flex-basis: 100%;
+        background-color: #d9e4dd;
+    }
+    100% {
+        flex-basis: 50%;
+        background-color: #d9e4dd;
+    }
+}
+@keyframes slide-left-right {
+    0% {
+        flex-basis: 0%;
+        background-color: white;
+    }
+    100% {
+        flex-basis: 50%;
+        background-color: #fbf7f0;
+    }
 }
 .container-left,
 .container-right {
     position: relative;
-    flex-basis: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     padding: 30px;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
 }
 .container-left {
     background-color: #d9e4dd;
+    animation-name: slide-left-left;
 }
 .container-right {
     background-color: #fbf7f0;
+    animation-name: slide-left-right;
 }
 .header {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     text-align: center;
     font-size: 96px;
-    transition: 1s;
 }
-.header::after {
-    transition: 1s;
-}
-.header::before {
-    transition: 1s;
-}
-@keyframes blink {
+@keyframes slide-scroll-down {
     0% {
-        opacity: 0;
+        top: 0%;
+    }
+    100% {
+        visibility: visible;
+        top: 90%;
     }
 }
-.cursor {
-    color: #cdc9c3;
-    animation: blink 1s steps(2) infinite;
+@keyframes slide-icon-down {
+    0% {
+        top: 0%;
+    }
+    100% {
+        visibility: visible;
+        top: 94%;
+    }
 }
 .scroll {
     position: absolute;
-    top: 90%;
-    left: 47.5%;
+    right: 0%;
     transform: rotate(-90deg);
+    visibility: hidden;
+    margin-right: -7px;
     color: #fbf7f0;
+    animation-name: slide-scroll-down;
+    animation-duration: 1s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
 }
 .scroll-icon {
-    font-size: 24px;
     position: absolute;
-    top: 95%;
-    left: 50.2%;
+    left: 0%;
+    visibility: hidden;
     color: #d9e4dd;
+    animation: slide-icon-down;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+.cursor {
+    color: #cdc9c3;
 }
 </style>
