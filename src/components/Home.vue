@@ -69,6 +69,9 @@ export default {
                 })
             );
         },
+        triggerComponent() {
+            this.about = true;
+        },
     },
     mounted() {
         setTimeout(() => {
@@ -93,7 +96,7 @@ export default {
 }
 @keyframes slide-left-left {
     0% {
-        flex-basis: 100%;
+        flex-basis: 0%;
         background-color: #d9e4dd;
     }
     100% {
@@ -103,7 +106,7 @@ export default {
 }
 @keyframes slide-left-right {
     0% {
-        flex-basis: 0%;
+        flex-basis: 100%;
         background-color: white;
     }
     100% {
@@ -118,7 +121,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     padding: 30px;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
 }
 .container-left {
@@ -160,7 +163,7 @@ export default {
     color: #fbf7f0;
     animation-name: slide-scroll-down;
     animation-duration: 1s;
-    animation-delay: 1.5s;
+    animation-delay: 1s;
     animation-fill-mode: forwards;
 }
 .scroll-icon {
@@ -170,7 +173,7 @@ export default {
     color: #d9e4dd;
     animation: slide-icon-down;
     animation-duration: 1s;
-    animation-delay: 2s;
+    animation-delay: 1.5s;
     animation-fill-mode: forwards;
 }
 .cursor {

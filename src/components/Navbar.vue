@@ -1,8 +1,28 @@
 <template>
     <div class="navbar-container">
         <div class="navbar">
-            <div class="title">Ngoc Long Nguyen</div>
-            <div class="links">
+            <div
+                class="title"
+                v-bind:style="[
+                    isHome
+                        ? { color: '#fbf7f0' }
+                        : {
+                              color: '#555555',
+                          },
+                ]"
+            >
+                <div class="name">Ngoc Long Nguyen</div>
+            </div>
+            <div
+                class="links"
+                v-bind:style="[
+                    isHome
+                        ? { color: '#d9e4dd' }
+                        : {
+                              color: '#555555',
+                          },
+                ]"
+            >
                 <instagram-icon size="1.5x" class="icon"></instagram-icon>
                 <linkedin-icon
                     size="1.5x"
@@ -23,6 +43,9 @@ import {
 } from "@zhuowenli/vue-feather-icons";
 export default {
     name: "Navbar",
+    props: {
+        isHome: Boolean,
+    },
     components: {
         InstagramIcon,
         LinkedinIcon,
@@ -48,7 +71,7 @@ export default {
     z-index: 1;
     width: 100%;
     animation-name: fade;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
 }
 .navbar {
     display: flex;
@@ -58,6 +81,8 @@ export default {
 }
 .title {
     color: #fbf7f0;
+}
+.name {
     transition: 0.5s;
 }
 .links {
@@ -65,7 +90,7 @@ export default {
     color: #d9e4dd;
     transition: 0.5s;
 }
-.title:hover,
+.name:hover,
 .icon:hover {
     cursor: pointer;
     color: #555555;
