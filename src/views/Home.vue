@@ -43,22 +43,24 @@ export default {
         },
         initTypeWriter(string, boolean) {
             return new Promise((resolve, reject) => {
-                let interval = setInterval(() => {
-                    this.typeWriter(string, boolean);
-                    if (this.message === "Herzlich Willkommen!") {
-                        resolve(this.loopPromises());
-                        clearInterval(interval);
-                    }
-                    if (this.message === string) {
-                        this.message = "";
-                        this.index = 0;
-                        resolve();
-                        clearInterval(interval);
-                    }
-                }, 175);
+                setTimeout(() => {
+                    let interval = setInterval(() => {
+                        this.typeWriter(string, boolean);
+                        if (this.message === "Herzlich Willkommen!") {
+                            resolve(this.chainPromises());
+                            clearInterval(interval);
+                        }
+                        if (this.message === string) {
+                            this.message = "";
+                            this.index = 0;
+                            resolve();
+                            clearInterval(interval);
+                        }
+                    }, 175);
+                }, 750);
             });
         },
-        loopPromises() {
+        chainPromises() {
             this.initTypeWriter("Hello!", true).then(() =>
                 this.initTypeWriter("Guten Tag!", false).then(() => {
                     this.initTypeWriter("Welcome!", true).then(() => {
@@ -70,8 +72,8 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            this.loopPromises();
-        }, 2750);
+            this.chainPromises();
+        }, 2250);
     },
 };
 </script>
