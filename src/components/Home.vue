@@ -69,14 +69,22 @@ export default {
                 })
             );
         },
-        triggerComponent() {
-            this.about = true;
+        triggerComponent(event) {
+            let scrollDistance = event.deltaY;
+            console.log(scrollDistance);
+            if (scrollDistance >= 100) {
+                this.$emit("scrolled", true);
+            }
         },
     },
     mounted() {
         setTimeout(() => {
             this.chainPromises();
         }, 2250);
+        window.addEventListener("wheel", this.triggerComponent);
+    },
+    beforeUnmount() {
+        window.removeEventListener("wheel", this.triggerComponent);
     },
 };
 </script>

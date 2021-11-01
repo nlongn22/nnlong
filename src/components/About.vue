@@ -1,7 +1,13 @@
 <template>
-    <div class="container">
-        <div class="container-left"></div>
-        <div class="container-right">
+    <div class="container" v-bind:class="{ transition: switchAboutTransition }">
+        <div
+            class="container-left"
+            v-bind:class="{ transition: switchAboutTransition }"
+        ></div>
+        <div
+            class="container-right"
+            v-bind:class="{ transition: switchAboutTransition }"
+        >
             <div class="content-container">
                 <div class="header">
                     <div>About me</div>
@@ -35,13 +41,49 @@
 <script>
 export default {
     name: "About",
+    props: {
+        switchAboutTransition: Boolean,
+    },
+    methods: {
+        triggerComponent(event) {
+            let scrollDistance = event.deltaY;
+            console.log(scrollDistance);
+            switch (true) {
+                case scrollDistance >= 100:
+                    this.$emit("scrolled", true);
+                    break;
+                case scrollDistance <= -100:
+                    this.$emit("scrolled", false);
+            }
+        },
+    },
+    mounted() {
+        window.addEventListener("wheel", this.triggerComponent);
+    },
+    beforeUnmount() {
+        window.removeEventListener("wheel", this.triggerComponent);
+    },
 };
 </script>
 
 <style scoped>
+@keyframes slide-container-down {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
 .container {
     display: flex;
     min-height: 100vh;
+}
+.container.transition {
+    display: flex;
+    min-height: 100vh;
+    animation-name: slide-container-down;
+    animation-duration: 1s;
 }
 @keyframes slide-left-left {
     0% {
@@ -74,6 +116,18 @@ export default {
     align-items: center;
     background-color: #fbf7f0;
     animation-name: slide-right-left;
+}
+.container-left.transition,
+.container-right.transition {
+    animation-name: none;
+    animation-duration: none;
+    animation-fill-mode: none;
+}
+.container-left.transition {
+    background-color: #d9e4dd;
+}
+.container-right.transition {
+    background-color: #fbf7f0;
 }
 .content-container {
     padding: 100px;

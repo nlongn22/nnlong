@@ -1,8 +1,13 @@
 <template>
     <div id="container">
         <Navbar v-bind:isHome="isHome" />
-        <Home v-if="isHome" />
-        <About v-if="isAbout" />
+        <Home v-if="isHome" v-on:scrolled="switchToAbout" />
+        <About
+            v-if="isAbout"
+            v-on:scrolled="switchToSkills"
+            v-bind:switchAboutTransition="switchAboutTransition"
+        />
+        <Skills v-if="isSkills" v-on:scrolled="switchToProject" />
     </div>
 </template>
 
@@ -10,39 +15,62 @@
 import Navbar from "@/components/Navbar.vue";
 import Home from "@/components/Home.vue";
 import About from "@/components/About.vue";
+import Skills from "@/components/Skills.vue";
 export default {
     components: {
         Navbar,
         Home,
         About,
+        Skills,
     },
     data() {
         return {
             isHome: true,
             isAbout: false,
+            isSkills: false,
+            switchAboutTransition: false,
         };
     },
     methods: {
-        triggerComponent(e) {
-            let scrollDistance = e.deltaY;
-            console.log(scrollDistance);
+        switchToAbout(boolean) {
             switch (true) {
-                case scrollDistance <= -100:
-                    this.isHome = true;
-                    this.isAbout = false;
-                    break;
-                case scrollDistance >= 100:
+                case boolean:
                     this.isHome = false;
                     this.isAbout = true;
+                    this.switchAboutTransition = false;
+                    this.isSkills = false;
                     break;
             }
         },
-    },
-    mounted() {
-        window.addEventListener("wheel", this.triggerComponent);
-    },
-    beforeDestroy() {
-        window.removeEventListener("scroll", this.triggerComponent);
+        switchToSkills(boolean) {
+            switch (true) {
+                case boolean:
+                    this.isHome = false;
+                    this.isAbout = false;
+                    this.isSkills = true;
+                    break;
+                case !boolean:
+                    this.isHome = true;
+                    this.isAbout = false;
+                    this.isSkills = false;
+                    break;
+            }
+        },
+        switchToProject(boolean) {
+            switch (true) {
+                case boolean:
+                    this.isHome = false;
+                    this.isAbout = false;
+                    this.isSkills = true;
+                    break;
+                case !boolean:
+                    this.isHome = false;
+                    this.isAbout = true;
+                    this.switchAboutTransition = true;
+                    this.isSkills = false;
+                    break;
+            }
+        },
     },
 };
 </script>
