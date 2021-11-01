@@ -5,7 +5,7 @@
         <About
             v-if="isAbout"
             v-on:scrolled="switchToSkills"
-            v-bind:switchAboutTransition="switchAboutTransition"
+            v-bind:isBack="isBack"
         />
         <Skills v-if="isSkills" v-on:scrolled="switchToProject" />
     </div>
@@ -28,7 +28,7 @@ export default {
             isHome: true,
             isAbout: false,
             isSkills: false,
-            switchAboutTransition: false,
+            isBack: false,
         };
     },
     methods: {
@@ -37,7 +37,7 @@ export default {
                 case boolean:
                     this.isHome = false;
                     this.isAbout = true;
-                    this.switchAboutTransition = false;
+                    this.isBack = false;
                     this.isSkills = false;
                     break;
             }
@@ -66,7 +66,7 @@ export default {
                 case !boolean:
                     this.isHome = false;
                     this.isAbout = true;
-                    this.switchAboutTransition = true;
+                    this.isBack = true;
                     this.isSkills = false;
                     break;
             }

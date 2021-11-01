@@ -3,7 +3,14 @@
         <div class="container-left">
             <transition name="fade">
                 <div class="header" v-if="message !== '' && isLeft">
-                    {{ message }}<span class="cursor">|</span>
+                    {{ message
+                    }}<span
+                        class="cursor"
+                        v-bind:class="{
+                            blinking: message === 'Enjoy your stay!',
+                        }"
+                        >|</span
+                    >
                 </div>
             </transition>
             <div class="scroll">Scroll</div>
@@ -13,6 +20,9 @@
                 <div class="header" v-if="message !== '' && !isLeft">
                     {{ message }}<span class="cursor">|</span>
                 </div>
+                <div class="header" v-else-if="message === 'Enjoy your stay!'">
+                    <smile-icon size="1.5x" class="smile-icon"></smile-icon>
+                </div>
             </transition>
             <arrow-down-icon size="1.5x" class="scroll-icon"></arrow-down-icon>
         </div>
@@ -20,15 +30,15 @@
 </template>
 
 <script>
-import { ArrowDownIcon } from "@zhuowenli/vue-feather-icons";
+import { SmileIcon, ArrowDownIcon } from "@zhuowenli/vue-feather-icons";
 export default {
     name: "Home",
     components: {
+        SmileIcon,
         ArrowDownIcon,
     },
     data() {
         return {
-            interval: null,
             message: "",
             index: 0,
             isLeft: true,
@@ -46,9 +56,10 @@ export default {
                 setTimeout(() => {
                     let interval = setInterval(() => {
                         this.typeWriter(string, boolean);
-                        if (this.message === "Herzlich Willkommen!") {
-                            resolve(this.chainPromises());
+                        if (this.message === "Enjoy your stay!") {
+                            resolve();
                             clearInterval(interval);
+                            return;
                         }
                         if (this.message === string) {
                             this.message = "";
@@ -63,16 +74,17 @@ export default {
         chainPromises() {
             this.initTypeWriter("Hello!", true).then(() =>
                 this.initTypeWriter("Guten Tag!", false).then(() => {
-                    this.initTypeWriter("Welcome!", true).then(() => {
-                        this.initTypeWriter("Herzlich Willkommen!", false);
+                    this.initTypeWriter("Dobrý den!", true).then(() => {
+                        this.initTypeWriter("Xin chào!", false).then(() => {
+                            this.initTypeWriter("Enjoy your stay!", true);
+                        });
                     });
                 })
             );
         },
         triggerComponent(event) {
             let scrollDistance = event.deltaY;
-            console.log(scrollDistance);
-            if (scrollDistance >= 100) {
+            if (scrollDistance > 0) {
                 this.$emit("scrolled", true);
             }
         },
@@ -180,7 +192,27 @@ export default {
     animation-delay: 1.5s;
     animation-fill-mode: forwards;
 }
+@keyframes fade-smile-icon {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.smile-icon {
+    animation-name: fade-smile-icon;
+    animation-duration: 1s;
+}
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+}
 .cursor {
     color: #cdc9c3;
+}
+.cursor.blinking {
+    animation: blink 1s steps(2) infinite;
 }
 </style>

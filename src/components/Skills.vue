@@ -39,12 +39,11 @@ export default {
     methods: {
         triggerComponent(event) {
             let scrollDistance = event.deltaY;
-            console.log(scrollDistance);
             switch (true) {
-                case scrollDistance >= 100:
+                case scrollDistance > 0:
                     this.$emit("scrolled", true);
                     break;
-                case scrollDistance <= -100:
+                case scrollDistance < 0:
                     this.$emit("scrolled", false);
             }
         },

@@ -1,13 +1,7 @@
 <template>
-    <div class="container" v-bind:class="{ transition: switchAboutTransition }">
-        <div
-            class="container-left"
-            v-bind:class="{ transition: switchAboutTransition }"
-        ></div>
-        <div
-            class="container-right"
-            v-bind:class="{ transition: switchAboutTransition }"
-        >
+    <div class="container" v-bind:class="{ back: isBack }">
+        <div class="container-left" v-bind:class="{ back: isBack }"></div>
+        <div class="container-right" v-bind:class="{ back: isBack }">
             <div class="content-container">
                 <div class="header">
                     <div>About me</div>
@@ -42,17 +36,16 @@
 export default {
     name: "About",
     props: {
-        switchAboutTransition: Boolean,
+        isBack: Boolean,
     },
     methods: {
         triggerComponent(event) {
             let scrollDistance = event.deltaY;
-            console.log(scrollDistance);
             switch (true) {
-                case scrollDistance >= 100:
+                case scrollDistance > 0:
                     this.$emit("scrolled", true);
                     break;
-                case scrollDistance <= -100:
+                case scrollDistance < 0:
                     this.$emit("scrolled", false);
             }
         },
@@ -67,7 +60,7 @@ export default {
 </script>
 
 <style scoped>
-@keyframes slide-container-down {
+@keyframes slide-container-up {
     0% {
         transform: translateY(100%);
     }
@@ -79,10 +72,8 @@ export default {
     display: flex;
     min-height: 100vh;
 }
-.container.transition {
-    display: flex;
-    min-height: 100vh;
-    animation-name: slide-container-down;
+.container.back {
+    animation-name: slide-container-up;
     animation-duration: 1s;
 }
 @keyframes slide-left-left {
@@ -104,7 +95,6 @@ export default {
 .container-left,
 .container-right {
     animation-duration: 1s;
-    animation-fill-mode: forwards;
 }
 .container-left {
     background-color: #d9e4dd;
@@ -117,17 +107,9 @@ export default {
     background-color: #fbf7f0;
     animation-name: slide-right-left;
 }
-.container-left.transition,
-.container-right.transition {
+.container-left.back,
+.container-right.back {
     animation-name: none;
-    animation-duration: none;
-    animation-fill-mode: none;
-}
-.container-left.transition {
-    background-color: #d9e4dd;
-}
-.container-right.transition {
-    background-color: #fbf7f0;
 }
 .content-container {
     padding: 100px;
