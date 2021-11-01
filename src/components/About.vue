@@ -17,11 +17,16 @@
                     natus est. Quas doloribus obcaecati quibusdam!
                 </div>
             </div>
-            <div class="pagination">
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
+            <div class="pagination-container">
+                <div class="pagination">
+                    <div class="circle">
+                        <div class="current-page">1</div>
+                        <div class="all-pages">4</div>
+                    </div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -84,16 +89,61 @@ export default {
     font-size: 24px;
     font-family: "ABeeZee";
 }
-.pagination {
-    height: 80%;
-    border: 1px solid black;
+.pagination-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 60%;
     margin-right: 50px;
+    font-family: "Righteous";
+    color: #555555;
+}
+.pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .circle {
-    width: 10px;
+    position: relative;
     height: 10px;
+    width: 10px;
     line-height: 10px;
     border-radius: 100%;
-    background-color: #555555;
+    margin-top: 150px;
+    background-color: #cdc9c3;
+}
+.circle:first-child {
+    position: relative;
+    margin-top: 0px;
+    background: none;
+    height: 40px;
+    width: 40px;
+    background: linear-gradient(
+        to top left,
+        #fbf7f0 calc(50% - 1px),
+        #cdc9c3,
+        #fbf7f0 calc(50% + 1px)
+    );
+}
+.all-pages {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+.circle:before {
+    content: "";
+    position: absolute;
+    top: -152px;
+    left: 50%;
+    height: 280px;
+    margin-top: 30px;
+    margin-left: -1px;
+    border: 1px solid #cdc9c3;
+}
+.circle:first-child:before {
+    display: none;
+}
+.circle:last-child:before {
+    display: none;
 }
 </style>
