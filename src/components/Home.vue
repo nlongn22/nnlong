@@ -82,9 +82,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-    font-family: "Righteous";
-}
 .fade-enter,
 .fade-leave-to {
     opacity: 0;
@@ -97,21 +94,17 @@ export default {
 @keyframes slide-left-left {
     0% {
         flex-basis: 0%;
-        background-color: #d9e4dd;
     }
     100% {
         flex-basis: 50%;
-        background-color: #d9e4dd;
     }
 }
-@keyframes slide-left-right {
+@keyframes slide-right-left {
     0% {
         flex-basis: 100%;
-        background-color: white;
     }
     100% {
         flex-basis: 50%;
-        background-color: #fbf7f0;
     }
 }
 .container-left,
@@ -130,11 +123,13 @@ export default {
 }
 .container-right {
     background-color: #fbf7f0;
-    animation-name: slide-left-right;
+    animation-name: slide-right-left;
 }
 .header {
     text-align: center;
+    color: #555555;
     font-size: 96px;
+    font-family: "Righteous";
 }
 @keyframes slide-scroll-down {
     0% {
@@ -160,6 +155,7 @@ export default {
     transform: rotate(-90deg);
     visibility: hidden;
     margin-right: -7px;
+    font-family: "Righteous";
     color: #fbf7f0;
     animation-name: slide-scroll-down;
     animation-duration: 1s;

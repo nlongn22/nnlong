@@ -58,7 +58,7 @@ export default {
 * {
     font-family: "Righteous";
 }
-@keyframes fade {
+@keyframes fade-container {
     0% {
         opacity: 0;
     }
@@ -70,7 +70,7 @@ export default {
     position: fixed;
     z-index: 1;
     width: 100%;
-    animation-name: fade;
+    animation-name: fade-container;
     animation-duration: 1s;
 }
 .navbar {
