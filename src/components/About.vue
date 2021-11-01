@@ -62,7 +62,7 @@ export default {
 <style scoped>
 @keyframes slide-container-up {
     0% {
-        transform: translateY(100%);
+        transform: translateY(-100%);
     }
     100% {
         transform: translateY(0%);
@@ -161,18 +161,13 @@ export default {
         #fbf7f0 calc(50% + 1px)
     );
 }
-.all-pages {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-}
 .circle:before {
     content: "";
     position: absolute;
-    top: -152px;
+    top: -165px;
     left: 50%;
-    height: 280px;
-    margin-top: 30px;
+    height: 300px;
+    margin-top: 15px;
     margin-left: -1px;
     border: 1px solid #cdc9c3;
 }
@@ -181,5 +176,14 @@ export default {
 }
 .circle:last-child:before {
     display: none;
+}
+.current-page,
+.all-pages {
+    font-size: 18px;
+}
+.all-pages {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 </style>

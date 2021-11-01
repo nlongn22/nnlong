@@ -21,11 +21,11 @@
         </div>
         <div class="pagination-container">
             <div class="pagination">
+                <div class="circle"></div>
                 <div class="circle">
-                    <div class="current-page">1</div>
+                    <div class="current-page">2</div>
                     <div class="all-pages">4</div>
                 </div>
-                <div class="circle"></div>
                 <div class="circle"></div>
                 <div class="circle"></div>
             </div>
@@ -60,7 +60,7 @@ export default {
 <style scoped>
 @keyframes slide-container-down {
     0% {
-        transform: translateY(-100%);
+        transform: translateY(100%);
         background-color: #fbf7f0;
     }
     100% {
@@ -116,9 +116,9 @@ export default {
     background-color: #cdc9c3;
 }
 .circle:first-child {
-    position: relative;
     margin-top: 0px;
-    background: none;
+}
+.circle:nth-child(2) {
     height: 40px;
     width: 40px;
     background: linear-gradient(
@@ -128,25 +128,31 @@ export default {
         #d9e4dd calc(50% + 1px)
     );
 }
-.all-pages {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-}
 .circle:before {
     content: "";
     position: absolute;
-    top: -152px;
+    top: 10px;
     left: 50%;
-    height: 280px;
-    margin-top: 30px;
+    height: 500px;
     margin-left: -1px;
     border: 1px solid #cdc9c3;
 }
-.circle:first-child:before {
+.circle:nth-child(2):before {
+    display: none;
+}
+.circle:nth-child(3):before {
     display: none;
 }
 .circle:last-child:before {
     display: none;
+}
+.current-page,
+.all-pages {
+    font-size: 18px;
+}
+.all-pages {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 </style>
