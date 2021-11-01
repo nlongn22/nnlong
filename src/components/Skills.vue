@@ -21,13 +21,13 @@
         </div>
         <div class="pagination-container">
             <div class="pagination">
-                <div class="circle"></div>
+                <div class="circle" v-on:click="switchToComponent(1)"></div>
                 <div class="circle">
                     <div class="current-page">2</div>
                     <div class="all-pages">4</div>
                 </div>
-                <div class="circle"></div>
-                <div class="circle"></div>
+                <div class="circle" v-on:click="switchToComponent(3)"></div>
+                <div class="circle" v-on:click="switchToComponent(4)"></div>
             </div>
         </div>
     </div>
@@ -46,6 +46,9 @@ export default {
                 case scrollDistance < 0:
                     this.$emit("scrolled", false);
             }
+        },
+        switchToComponent(pageNumber) {
+            this.$emit("clicked", pageNumber);
         },
     },
     mounted() {
@@ -107,6 +110,7 @@ export default {
     align-items: center;
 }
 .circle {
+    cursor: pointer;
     position: relative;
     height: 10px;
     width: 10px;
@@ -119,6 +123,7 @@ export default {
     margin-top: 0px;
 }
 .circle:nth-child(2) {
+    cursor: auto;
     height: 40px;
     width: 40px;
     background: linear-gradient(

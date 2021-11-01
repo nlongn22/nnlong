@@ -4,10 +4,15 @@
         <Home v-if="isHome" v-on:scrolled="switchToAbout" />
         <About
             v-if="isAbout"
-            v-on:scrolled="switchToSkills"
             v-bind:isBack="isBack"
+            v-on:scrolled="switchToSkills"
+            v-on:clicked="switchComponent"
         />
-        <Skills v-if="isSkills" v-on:scrolled="switchToProject" />
+        <Skills
+            v-if="isSkills"
+            v-on:scrolled="switchToProject"
+            v-on:clicked="switchComponent"
+        />
     </div>
 </template>
 
@@ -32,6 +37,19 @@ export default {
         };
     },
     methods: {
+        switchComponent(pageNumber) {
+            console.log(pageNumber === 2);
+            switch (true) {
+                case pageNumber === 1:
+                    this.isAbout = true;
+                    this.isSkills = false;
+                    break;
+                case pageNumber === 2:
+                    this.isAbout = false;
+                    this.isSkills = true;
+                    break;
+            }
+        },
         switchToAbout(boolean) {
             switch (true) {
                 case boolean:

@@ -23,9 +23,9 @@
                         <div class="current-page">1</div>
                         <div class="all-pages">4</div>
                     </div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
+                    <div class="circle" v-on:click="switchToComponent(2)"></div>
+                    <div class="circle" v-on:click="switchToComponent(3)"></div>
+                    <div class="circle" v-on:click="switchToComponent(4)"></div>
                 </div>
             </div>
         </div>
@@ -48,6 +48,9 @@ export default {
                 case scrollDistance < 0:
                     this.$emit("scrolled", false);
             }
+        },
+        switchToComponent(pageNumber) {
+            this.$emit("clicked", pageNumber);
         },
     },
     mounted() {
@@ -140,6 +143,7 @@ export default {
     align-items: center;
 }
 .circle {
+    cursor: pointer;
     position: relative;
     height: 10px;
     width: 10px;
@@ -149,6 +153,7 @@ export default {
     background-color: #cdc9c3;
 }
 .circle:first-child {
+    cursor: auto;
     position: relative;
     margin-top: 0px;
     background: none;
@@ -164,9 +169,9 @@ export default {
 .circle:before {
     content: "";
     position: absolute;
-    top: -165px;
+    top: -163px;
     left: 50%;
-    height: 300px;
+    height: 310px;
     margin-top: 15px;
     margin-left: -1px;
     border: 1px solid #cdc9c3;
