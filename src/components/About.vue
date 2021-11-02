@@ -17,23 +17,10 @@
                     natus est. Quas doloribus obcaecati quibusdam!
                 </div>
             </div>
-            <div class="pagination-container">
-                <div class="pagination">
-                    <div class="circle">
-                        <div class="current-page">1</div>
-                        <div class="all-pages">4</div>
-                    </div>
-                    <div
-                        class="circle"
-                        v-for="(index, circle) in 3"
-                        v-bind:key="circle.id"
-                        v-on:click="jumpToPage(index + 1)"
-                    ></div>
-                </div>
-            </div>
+            <Scroll v-bind:currentPage="1" v-on:jumpToPage="jumpToPage" />
         </div>
         <div class="scroll-container">
-            <Scroll
+            <Navigator
                 v-bind:isHidden="true"
                 v-bind:currentPage="1"
                 v-on:nextPage="jumpToPage"
@@ -43,11 +30,13 @@
 </template>
 
 <script>
-import Scroll from "../components/Scroll.vue";
+import Scroll from "./Scroll.vue";
+import Navigator from "./Navigator.vue";
 export default {
     name: "About",
     components: {
         Scroll,
+        Navigator,
     },
     props: {
         isBack: Boolean,
@@ -126,69 +115,6 @@ export default {
     color: #555555;
     font-size: 24px;
     font-family: "ABeeZee";
-}
-.pagination-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 60%;
-    margin-right: 50px;
-    font-family: "Righteous";
-    color: #555555;
-}
-.pagination {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.circle {
-    cursor: pointer;
-    position: relative;
-    height: 10px;
-    width: 10px;
-    line-height: 10px;
-    border-radius: 100%;
-    margin-top: 150px;
-    background-color: #cdc9c3;
-}
-.circle:first-child {
-    cursor: auto;
-    position: relative;
-    margin-top: 0px;
-    background: none;
-    height: 40px;
-    width: 40px;
-    background: linear-gradient(
-        to top left,
-        #fbf7f0 calc(50% - 1px),
-        #cdc9c3,
-        #fbf7f0 calc(50% + 1px)
-    );
-}
-.circle:before {
-    content: "";
-    position: absolute;
-    top: -163px;
-    left: 50%;
-    height: 310px;
-    margin-top: 15px;
-    margin-left: -1px;
-    border: 1px solid #cdc9c3;
-}
-.circle:first-child:before {
-    display: none;
-}
-.circle:last-child:before {
-    display: none;
-}
-.current-page,
-.all-pages {
-    font-size: 18px;
-}
-.all-pages {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
 }
 .scroll-container {
     position: absolute;

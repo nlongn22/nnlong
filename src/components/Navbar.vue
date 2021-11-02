@@ -4,7 +4,7 @@
             <div
                 class="title"
                 v-bind:style="[
-                    !isHome
+                    isHome
                         ? { color: '#fbf7f0' }
                         : {
                               color: '#cdc9c3',
@@ -18,7 +18,7 @@
             <div
                 class="links"
                 v-bind:style="[
-                    !isHome
+                    isHome
                         ? { color: '#d9e4dd' }
                         : {
                               color: '#cdc9c3',
@@ -55,7 +55,7 @@ export default {
     },
     methods: {
         jumpToTop() {
-            this.$emit("clicked");
+            this.$emit("jumpToTop", 1);
         },
     },
 };

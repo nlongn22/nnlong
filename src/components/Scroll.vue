@@ -1,60 +1,151 @@
 <template>
-    <div class="wrapper">
-        <div class="scroll-top" v-on:click="nextPage(currentPage + 1)">
-            <arrow-left-icon size="1.5x" class="down-icon"></arrow-left-icon>
-            <div class="direction">Scroll</div>
+    <div class="pagination-container">
+        <div class="pagination" v-if="currentPage === 1">
+            <div class="circle" v-bind:class="{ about: currentPage === 1 }">
+                <div class="current-page">1</div>
+                <div class="all-pages">4</div>
+            </div>
+            <div
+                class="circle"
+                v-bind:class="{ about: currentPage === 1 }"
+                v-for="(index, circle) in 3"
+                v-bind:key="circle.id"
+                v-on:click="jumpToPage(index + 1)"
+            ></div>
         </div>
-        <div class="scroll-bottom" v-if="!isHidden" v-on:click="nextPage(1)">
-            <div class="direction">Top</div>
-            <arrow-right-icon size="1.5x" class="up-icon"></arrow-right-icon>
+
+        <div class="pagination" v-if="currentPage === 2">
+            <div
+                class="circle"
+                v-bind:class="{ skills: currentPage === 2 }"
+                v-on:click="jumpToPage(1)"
+            ></div>
+            <div class="circle" v-bind:class="{ skills: currentPage === 2 }">
+                <div class="current-page">2</div>
+                <div class="all-pages">4</div>
+            </div>
+            <div
+                class="circle"
+                v-bind:class="{ skills: currentPage === 2 }"
+                v-on:click="jumpToPage(3)"
+            ></div>
+            <div
+                class="circle"
+                v-bind:class="{ skills: currentPage === 2 }"
+                v-on:click="jumpToPage(4)"
+            ></div>
         </div>
     </div>
 </template>
 
 <script>
-import { ArrowLeftIcon, ArrowRightIcon } from "@zhuowenli/vue-feather-icons";
 export default {
     name: "Scroll",
     props: {
-        isHidden: Boolean,
         currentPage: null,
     },
-    components: {
-        ArrowLeftIcon,
-        ArrowRightIcon,
-    },
     methods: {
-        nextPage(pageNumber) {
-            this.$emit("nextPage", pageNumber);
+        jumpToPage(pageNumber) {
+            this.$emit("jumpToPage", pageNumber);
         },
     },
 };
 </script>
 
 <style scoped>
-.wrapper {
+.pagination-container {
     display: flex;
-    justify-content: space-between;
-    width: inherit;
-}
-.scroll-top,
-.scroll-bottom {
-    display: flex;
-    transition: 0.5s;
-}
-.scroll-top:hover,
-.scroll-bottom:hover {
-    cursor: pointer;
-    color: #555555;
-    transition: 0.5s;
-}
-.direction {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 60%;
+    margin-right: 50px;
     font-family: "Righteous";
+    color: #555555;
 }
-.down-icon {
-    margin-right: 5px;
+.pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.up-icon {
-    margin-left: 5px;
+.current-page,
+.all-pages {
+    font-size: 18px;
+}
+.all-pages {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+.circle {
+    cursor: pointer;
+    position: relative;
+    height: 10px;
+    width: 10px;
+    line-height: 10px;
+    border-radius: 100%;
+    margin-top: 150px;
+    background-color: #cdc9c3;
+}
+.circle.about:first-child {
+    cursor: auto;
+    position: relative;
+    margin-top: 0px;
+    background: none;
+    height: 40px;
+    width: 40px;
+    background: linear-gradient(
+        to top left,
+        #fbf7f0 calc(50% - 1px),
+        #cdc9c3,
+        #fbf7f0 calc(50% + 1px)
+    );
+}
+.circle.about:before {
+    content: "";
+    position: absolute;
+    top: -163px;
+    left: 50%;
+    height: 310px;
+    margin-top: 15px;
+    margin-left: -1px;
+    border: 1px solid #cdc9c3;
+}
+.circle.about:first-child:before {
+    display: none;
+}
+.circle.about:last-child:before {
+    display: none;
+}
+.circle.skills:first-child {
+    margin-top: 0px;
+}
+.circle.skills:nth-child(2) {
+    cursor: auto;
+    height: 40px;
+    width: 40px;
+    background: linear-gradient(
+        to top left,
+        #d9e4dd calc(50% - 1px),
+        #cdc9c3,
+        #d9e4dd calc(50% + 1px)
+    );
+}
+.circle.skills:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    height: 500px;
+    margin-left: -1px;
+    border: 1px solid #cdc9c3;
+}
+.circle.skills:nth-child(2):before {
+    display: none;
+}
+.circle.skills:nth-child(3):before {
+    display: none;
+}
+.circle.skills:last-child:before {
+    display: none;
 }
 </style>

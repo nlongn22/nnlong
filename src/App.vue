@@ -1,21 +1,21 @@
 <template>
     <div id="container">
-        <Navbar v-bind:isHome="page === 1" />
+        <Navbar v-bind:isHome="page === 0" v-on:jumpToTop="jumpToPage" />
         <Home v-if="page <= 0" v-on:setPageNumber="jumpToPage" />
         <About
             v-if="page === 1"
-            v-on:jumpToPage="jumpToPage"
             v-bind:isBack="isBack"
+            v-on:jumpToPage="jumpToPage"
         />
         <Skills
             v-if="page === 2"
-            v-on:jumpToPage="jumpToPage"
             v-bind:isBack="isBack"
+            v-on:jumpToPage="jumpToPage"
         />
         <Marketplace
             v-if="page >= 3"
-            v-on:jumpToPage="jumpToPage"
             v-bind:isBack="isBack"
+            v-on:jumpToPage="jumpToPage"
         />
     </div>
 </template>
@@ -55,13 +55,13 @@ export default {
                     this.isBack = true;
                     this.page -= 1;
                     if (this.page <= 0) {
-                        this.page = 3;
+                        this.page = 1;
                     }
                     break;
             }
         },
         jumpToPage(pageNumber) {
-            if (this.page < pageNumber) {
+            if (this.page > pageNumber) {
                 this.isBack = true;
             } else {
                 this.isBack = false;

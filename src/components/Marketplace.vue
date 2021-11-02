@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="scroll-container">
-        <Scroll
+        <Navigator
             v-bind:isHidden="false"
             v-bind:currentPage="3"
             v-on:nextPage="jumpToPage"
@@ -41,11 +41,11 @@
 </template>
 
 <script>
-import Scroll from "../components/Scroll.vue";
+import Navigator from "./Navigator.vue";
 export default {
-    name: "Skills",
+    name: "Marketplace",
     components: {
-        Scroll,
+        Navigator,
     },
     methods: {
         jumpToPage(pageNumber) {
