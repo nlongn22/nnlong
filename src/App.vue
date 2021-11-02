@@ -1,6 +1,6 @@
 <template>
     <div id="container">
-        <Navbar v-bind:isHome="isHome" />
+        <Navbar v-bind:isHome="isHome" v-on:clicked="switchToHome" />
         <Home v-if="isHome" v-on:scrolled="switchToAbout" />
         <About
             v-if="isAbout"
@@ -42,6 +42,7 @@ export default {
             switch (true) {
                 case pageNumber === 1:
                     this.isAbout = true;
+                    this.isBack = true;
                     this.isSkills = false;
                     break;
                 case pageNumber === 2:
@@ -49,6 +50,12 @@ export default {
                     this.isSkills = true;
                     break;
             }
+        },
+        switchToHome() {
+            this.isHome = true;
+            this.isAbout = false;
+            this.isSkills = false;
+            this.isBack = false;
         },
         switchToAbout(boolean) {
             switch (true) {

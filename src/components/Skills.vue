@@ -31,11 +31,19 @@
             </div>
         </div>
     </div>
+    <div class="scroll-container">
+        <Scroll />
+    </div>
 </template>
 
 <script>
+import Scroll from "../components/Scroll.vue";
 export default {
     name: "Skills",
+    components: {
+        Scroll,
+    },
+    emits: ["scrolled", "clicked"],
     methods: {
         triggerComponent(event) {
             let scrollDistance = event.deltaY;
@@ -64,7 +72,7 @@ export default {
 @keyframes slide-container-down {
     0% {
         transform: translateY(100%);
-        background-color: #fbf7f0;
+        background-color: #d9e4dd;
     }
     100% {
         transform: translateY(0%);
@@ -76,7 +84,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     min-height: 100vh;
-    background-color: #fbf7f0;
+    background-color: #d9e4dd;
     animation-name: slide-container-down;
     animation-duration: 1s;
     animation-fill-mode: forwards;
@@ -159,5 +167,14 @@ export default {
     position: absolute;
     bottom: 0px;
     right: 0px;
+}
+.scroll-container {
+    position: absolute;
+    width: 175px;
+    bottom: 0px;
+    left: 0px;
+    transform: rotate(-90deg) translate(43%, -150%);
+    margin-bottom: 30px;
+    color: #fbf7f0;
 }
 </style>

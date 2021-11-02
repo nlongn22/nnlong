@@ -29,12 +29,19 @@
                 </div>
             </div>
         </div>
+        <div class="scroll-container">
+            <Scroll />
+        </div>
     </div>
 </template>
 
 <script>
+import Scroll from "../components/Scroll.vue";
 export default {
     name: "About",
+    components: {
+        Scroll,
+    },
     props: {
         isBack: Boolean,
     },
@@ -72,6 +79,7 @@ export default {
     }
 }
 .container {
+    position: relative;
     display: flex;
     min-height: 100vh;
 }
@@ -190,5 +198,14 @@ export default {
     position: absolute;
     bottom: 0px;
     right: 0px;
+}
+.scroll-container {
+    position: absolute;
+    width: 175px;
+    bottom: 0px;
+    left: 0px;
+    transform: rotate(-90deg) translate(43%, -150%);
+    margin-bottom: 30px;
+    color: #d9e4dd;
 }
 </style>

@@ -7,11 +7,13 @@
                     isHome
                         ? { color: '#fbf7f0' }
                         : {
-                              color: '#555555',
+                              color: '#cdc9c3',
                           },
                 ]"
             >
-                <div class="name">Ngoc Long Nguyen</div>
+                <div class="name" v-on:click="jumpToTop()">
+                    Ngoc Long Nguyen
+                </div>
             </div>
             <div
                 class="links"
@@ -19,7 +21,7 @@
                     isHome
                         ? { color: '#d9e4dd' }
                         : {
-                              color: '#555555',
+                              color: '#cdc9c3',
                           },
                 ]"
             >
@@ -50,6 +52,11 @@ export default {
         InstagramIcon,
         LinkedinIcon,
         GithubIcon,
+    },
+    methods: {
+        jumpToTop() {
+            this.$emit("clicked");
+        },
     },
 };
 </script>
