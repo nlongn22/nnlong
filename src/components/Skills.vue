@@ -21,13 +21,11 @@
         </div>
         <Scroll v-bind:currentPage="2" v-on:jumpToPage="jumpToPage" />
     </div>
-    <div class="scroll-container">
-        <Navigator
-            v-bind:isHidden="false"
-            v-bind:currentPage="2"
-            v-on:nextPage="jumpToPage"
-        />
-    </div>
+    <Navigator
+        v-bind:isHidden="false"
+        v-bind:currentPage="2"
+        v-on:nextPage="jumpToPage"
+    />
 </template>
 
 <script>
@@ -93,14 +91,5 @@ export default {
     color: #555555;
     font-size: 24px;
     font-family: "ABeeZee";
-}
-.scroll-container {
-    position: absolute;
-    width: 175px;
-    bottom: 0px;
-    left: 0px;
-    transform: rotate(-90deg) translate(43%, -150%);
-    margin-bottom: 30px;
-    color: #fbf7f0;
 }
 </style>

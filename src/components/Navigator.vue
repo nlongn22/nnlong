@@ -1,12 +1,24 @@
 <template>
-    <div class="wrapper">
-        <div class="scroll-top" v-on:click="nextPage(currentPage + 1)">
-            <arrow-left-icon size="1.5x" class="down-icon"></arrow-left-icon>
-            <div class="direction">Scroll</div>
-        </div>
-        <div class="scroll-bottom" v-if="!isHidden" v-on:click="nextPage(1)">
-            <div class="direction">Top</div>
-            <arrow-right-icon size="1.5x" class="up-icon"></arrow-right-icon>
+    <div class="navigator-container" v-bind:class="[changeColor]">
+        <div class="wrapper">
+            <div class="scroll-top" v-on:click="nextPage(currentPage + 1)">
+                <arrow-left-icon
+                    size="1.5x"
+                    class="down-icon"
+                ></arrow-left-icon>
+                <div class="direction">Scroll</div>
+            </div>
+            <div
+                class="scroll-bottom"
+                v-if="!isHidden"
+                v-on:click="nextPage(1)"
+            >
+                <div class="direction">Top</div>
+                <arrow-right-icon
+                    size="1.5x"
+                    class="up-icon"
+                ></arrow-right-icon>
+            </div>
         </div>
     </div>
 </template>
@@ -19,9 +31,18 @@ export default {
         isHidden: Boolean,
         currentPage: null,
     },
+    data() {},
     components: {
         ArrowLeftIcon,
         ArrowRightIcon,
+    },
+    computed: {
+        changeColor: function () {
+            return {
+                green: this.currentPage % 2 !== 0,
+                white: this.currentPage % 2 === 0,
+            };
+        },
     },
     methods: {
         nextPage(pageNumber) {
@@ -32,6 +53,21 @@ export default {
 </script>
 
 <style scoped>
+.navigator-container {
+    position: absolute;
+    width: 175px;
+    bottom: 0px;
+    left: 0px;
+    transform: rotate(-90deg) translate(43%, -150%);
+    margin-bottom: 30px;
+    color: #d9e4dd;
+}
+.navigator-container.green {
+    color: #d9e4dd;
+}
+.navigator-container.white {
+    color: #fbf7f0;
+}
 .wrapper {
     display: flex;
     justify-content: space-between;

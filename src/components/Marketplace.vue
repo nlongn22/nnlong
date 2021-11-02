@@ -31,13 +31,11 @@
             </div>
         </div>
     </div>
-    <div class="scroll-container">
-        <Navigator
-            v-bind:isHidden="false"
-            v-bind:currentPage="3"
-            v-on:nextPage="jumpToPage"
-        />
-    </div>
+    <Navigator
+        v-bind:isHidden="false"
+        v-bind:currentPage="3"
+        v-on:nextPage="jumpToPage"
+    />
 </template>
 
 <script>
@@ -152,14 +150,5 @@ export default {
     position: absolute;
     bottom: 0px;
     right: 0px;
-}
-.scroll-container {
-    position: absolute;
-    width: 175px;
-    bottom: 0px;
-    left: 0px;
-    transform: rotate(-90deg) translate(43%, -150%);
-    margin-bottom: 30px;
-    color: #d9e4dd;
 }
 </style>
