@@ -12,6 +12,7 @@
                 ]"
             >
                 <div class="name" v-on:click="jumpToTop()">
+                    <home-icon size="1.5x" id="home"></home-icon>
                     Ngoc Long Nguyen
                 </div>
             </div>
@@ -39,6 +40,7 @@
 
 <script>
 import {
+    HomeIcon,
     InstagramIcon,
     LinkedinIcon,
     GithubIcon,
@@ -49,6 +51,7 @@ export default {
         isHome: Boolean,
     },
     components: {
+        HomeIcon,
         InstagramIcon,
         LinkedinIcon,
         GithubIcon,
@@ -81,7 +84,12 @@ export default {
 .title {
     color: #fbf7f0;
 }
+#home {
+    margin-right: 5px;
+}
 .name {
+    display: flex;
+    align-items: center;
     transition: 0.5s;
 }
 .links {
