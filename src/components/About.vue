@@ -23,14 +23,21 @@
                         <div class="current-page">1</div>
                         <div class="all-pages">4</div>
                     </div>
-                    <div class="circle" v-on:click="switchToComponent(2)"></div>
-                    <div class="circle" v-on:click="switchToComponent(3)"></div>
-                    <div class="circle" v-on:click="switchToComponent(4)"></div>
+                    <div
+                        class="circle"
+                        v-for="(index, circle) in 3"
+                        v-bind:key="circle.id"
+                        v-on:click="jumpToPage(index + 1)"
+                    ></div>
                 </div>
             </div>
         </div>
         <div class="scroll-container">
-            <Scroll />
+            <Scroll
+                v-bind:isHidden="true"
+                v-bind:currentPage="1"
+                v-on:nextPage="jumpToPage"
+            />
         </div>
     </div>
 </template>
@@ -46,25 +53,9 @@ export default {
         isBack: Boolean,
     },
     methods: {
-        triggerComponent(event) {
-            let scrollDistance = event.deltaY;
-            switch (true) {
-                case scrollDistance > 0:
-                    this.$emit("scrolled", true);
-                    break;
-                case scrollDistance < 0:
-                    this.$emit("scrolled", false);
-            }
+        jumpToPage(pageNumber) {
+            this.$emit("jumpToPage", pageNumber);
         },
-        switchToComponent(pageNumber) {
-            this.$emit("clicked", pageNumber);
-        },
-    },
-    mounted() {
-        window.addEventListener("wheel", this.triggerComponent);
-    },
-    beforeUnmount() {
-        window.removeEventListener("wheel", this.triggerComponent);
     },
 };
 </script>

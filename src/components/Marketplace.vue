@@ -1,8 +1,8 @@
 <template>
-    <div class="container" v-bind:class="{ back: isBack }">
+    <div class="container">
         <div class="content-container">
             <div class="header">
-                <div>Technologies I'm familiar with</div>
+                <div>MechMarket.eu</div>
             </div>
             <div class="text">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -34,7 +34,7 @@
     <div class="scroll-container">
         <Scroll
             v-bind:isHidden="false"
-            v-bind:currentPage="2"
+            v-bind:currentPage="3"
             v-on:nextPage="jumpToPage"
         />
     </div>
@@ -46,9 +46,6 @@ export default {
     name: "Skills",
     components: {
         Scroll,
-    },
-    props: {
-        isBack: Boolean,
     },
     methods: {
         jumpToPage(pageNumber) {
@@ -67,26 +64,15 @@ export default {
         transform: translateY(0%);
     }
 }
-@keyframes slide-container-down {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(0%);
-    }
-}
 .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     min-height: 100vh;
-    background-color: #d9e4dd;
+    background-color: #fbf7f0;
     animation-name: slide-container-up;
     animation-duration: 1s;
     animation-fill-mode: forwards;
-}
-.container.back {
-    animation-name: slide-container-down;
 }
 .content-container {
     padding: 100px;
@@ -135,9 +121,9 @@ export default {
     width: 40px;
     background: linear-gradient(
         to top left,
-        #d9e4dd calc(50% - 1px),
+        #fbf7f0 calc(50% - 1px),
         #cdc9c3,
-        #d9e4dd calc(50% + 1px)
+        #fbf7f0 calc(50% + 1px)
     );
 }
 .circle:before {
@@ -174,6 +160,6 @@ export default {
     left: 0px;
     transform: rotate(-90deg) translate(43%, -150%);
     margin-bottom: 30px;
-    color: #fbf7f0;
+    color: #d9e4dd;
 }
 </style>

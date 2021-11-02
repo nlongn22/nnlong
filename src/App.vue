@@ -1,17 +1,21 @@
 <template>
     <div id="container">
-        <Navbar v-bind:isHome="isHome" v-on:clicked="switchToHome" />
-        <Home v-if="isHome" v-on:scrolled="switchToAbout" />
+        <Navbar v-bind:isHome="page === 1" />
+        <Home v-if="page <= 0" v-on:setPageNumber="jumpToPage" />
         <About
-            v-if="isAbout"
+            v-if="page === 1"
+            v-on:jumpToPage="jumpToPage"
             v-bind:isBack="isBack"
-            v-on:scrolled="switchToSkills"
-            v-on:clicked="switchComponent"
         />
         <Skills
-            v-if="isSkills"
-            v-on:scrolled="switchToProject"
-            v-on:clicked="switchComponent"
+            v-if="page === 2"
+            v-on:jumpToPage="jumpToPage"
+            v-bind:isBack="isBack"
+        />
+        <Marketplace
+            v-if="page >= 3"
+            v-on:jumpToPage="jumpToPage"
+            v-bind:isBack="isBack"
         />
     </div>
 </template>
@@ -21,81 +25,55 @@ import Navbar from "@/components/Navbar.vue";
 import Home from "@/components/Home.vue";
 import About from "@/components/About.vue";
 import Skills from "@/components/Skills.vue";
+import Marketplace from "@/components/Marketplace.vue";
 export default {
     components: {
         Navbar,
         Home,
         About,
         Skills,
+        Marketplace,
     },
     data() {
         return {
-            isHome: true,
-            isAbout: false,
-            isSkills: false,
+            page: 0,
             isBack: false,
         };
     },
     methods: {
-        switchComponent(pageNumber) {
-            console.log(pageNumber === 2);
+        triggerComponent(event) {
+            let scrollDistance = event.deltaY;
             switch (true) {
-                case pageNumber === 1:
-                    this.isAbout = true;
-                    this.isBack = true;
-                    this.isSkills = false;
-                    break;
-                case pageNumber === 2:
-                    this.isAbout = false;
-                    this.isSkills = true;
-                    break;
-            }
-        },
-        switchToHome() {
-            this.isHome = true;
-            this.isAbout = false;
-            this.isSkills = false;
-            this.isBack = false;
-        },
-        switchToAbout(boolean) {
-            switch (true) {
-                case boolean:
-                    this.isHome = false;
-                    this.isAbout = true;
+                case scrollDistance > 15:
                     this.isBack = false;
-                    this.isSkills = false;
+                    this.page += 1;
+                    if (this.page >= 3) {
+                        this.page = 3;
+                    }
                     break;
-            }
-        },
-        switchToSkills(boolean) {
-            switch (true) {
-                case boolean:
-                    this.isHome = false;
-                    this.isAbout = false;
-                    this.isSkills = true;
-                    break;
-                case !boolean:
-                    this.isHome = true;
-                    this.isAbout = false;
-                    this.isSkills = false;
-                    break;
-            }
-        },
-        switchToProject(boolean) {
-            switch (true) {
-                case boolean:
-                    this.isHome = false;
-                    this.isAbout = false;
-                    this.isSkills = true;
-                    break;
-                case !boolean:
-                    this.isHome = false;
-                    this.isAbout = true;
+                case scrollDistance < -15:
                     this.isBack = true;
-                    this.isSkills = false;
+                    this.page -= 1;
+                    if (this.page <= 0) {
+                        this.page = 3;
+                    }
                     break;
             }
         },
+        jumpToPage(pageNumber) {
+            if (this.page < pageNumber) {
+                this.isBack = true;
+            } else {
+                this.isBack = false;
+            }
+            this.page = pageNumber;
+        },
+    },
+    mounted() {
+        window.addEventListener("wheel", this.triggerComponent);
+    },
+    beforeUnmount() {
+        window.removeEventListener("wheel", this.triggerComponent);
     },
 };
 </script>
