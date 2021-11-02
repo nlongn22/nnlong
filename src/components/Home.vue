@@ -51,11 +51,11 @@ export default {
             this.message += stringArray[this.index];
             this.index++;
         },
-        initTypeWriter(string, boolean) {
+        initTypeWriter(string, leftRight) {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     let interval = setInterval(() => {
-                        this.typeWriter(string, boolean);
+                        this.typeWriter(string, leftRight);
                         if (this.message === "Enjoy your stay!") {
                             resolve();
                             clearInterval(interval);
@@ -139,7 +139,6 @@ export default {
     text-align: center;
     color: #555555;
     font-size: 96px;
-    font-family: "Righteous";
 }
 @keyframes slide-scroll-down {
     0% {
@@ -182,16 +181,8 @@ export default {
     animation-delay: 1.5s;
     animation-fill-mode: forwards;
 }
-@keyframes fade-smile-icon {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
 .smile-icon {
-    animation-name: fade-smile-icon;
+    animation-name: fade-element;
     animation-duration: 1s;
 }
 @keyframes blink {

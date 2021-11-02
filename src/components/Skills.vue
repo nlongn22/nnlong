@@ -1,5 +1,5 @@
 <template>
-    <div class="container" v-bind:class="{ back: isBack }">
+    <div class="container" v-bind:class="{ back: isPrevious }">
         <div class="content-container">
             <div class="header">
                 <div>Technologies I'm familiar with</div>
@@ -38,7 +38,7 @@ export default {
         Navigator,
     },
     props: {
-        isBack: Boolean,
+        isPrevious: Boolean,
     },
     methods: {
         jumpToPage(pageNumber) {
@@ -49,22 +49,6 @@ export default {
 </script>
 
 <style scoped>
-@keyframes slide-container-up {
-    0% {
-        transform: translateY(100%);
-    }
-    100% {
-        transform: translateY(0%);
-    }
-}
-@keyframes slide-container-down {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(0%);
-    }
-}
 .container {
     display: flex;
     justify-content: space-between;
@@ -77,19 +61,5 @@ export default {
 }
 .container.back {
     animation-name: slide-container-down;
-}
-.content-container {
-    padding: 100px;
-}
-.header {
-    margin-bottom: 30px;
-    color: #555555;
-    font-size: 72px;
-    font-family: "Righteous";
-}
-.text {
-    color: #555555;
-    font-size: 24px;
-    font-family: "ABeeZee";
 }
 </style>

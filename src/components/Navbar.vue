@@ -55,7 +55,7 @@ export default {
     },
     methods: {
         jumpToTop() {
-            this.$emit("jumpToTop", 1);
+            this.$emit("jumpToTop", 0);
         },
     },
 };
@@ -65,19 +65,11 @@ export default {
 * {
     font-family: "Righteous";
 }
-@keyframes fade-container {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
 .navbar-container {
     position: fixed;
     z-index: 1;
     width: 100%;
-    animation-name: fade-container;
+    animation-name: fade-element;
     animation-duration: 1s;
 }
 .navbar {

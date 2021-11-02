@@ -1,7 +1,7 @@
 <template>
-    <div class="container" v-bind:class="{ back: isBack }">
-        <div class="container-left" v-bind:class="{ back: isBack }"></div>
-        <div class="container-right" v-bind:class="{ back: isBack }">
+    <div class="container" v-bind:class="{ back: isPrevious }">
+        <div class="container-left" v-bind:class="{ back: isPrevious }"></div>
+        <div class="container-right" v-bind:class="{ back: isPrevious }">
             <div class="content-container">
                 <div class="header">
                     <div>About me</div>
@@ -37,7 +37,7 @@ export default {
         Navigator,
     },
     props: {
-        isBack: Boolean,
+        isPrevious: Boolean,
     },
     methods: {
         jumpToPage(pageNumber) {
@@ -48,21 +48,13 @@ export default {
 </script>
 
 <style scoped>
-@keyframes slide-container-up {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(0%);
-    }
-}
 .container {
     position: relative;
     display: flex;
     min-height: 100vh;
 }
 .container.back {
-    animation-name: slide-container-up;
+    animation-name: slide-container-down;
     animation-duration: 1s;
 }
 @keyframes slide-left-left {
@@ -99,19 +91,5 @@ export default {
 .container-left.back,
 .container-right.back {
     animation-name: none;
-}
-.content-container {
-    padding: 100px;
-}
-.header {
-    margin-bottom: 30px;
-    color: #555555;
-    font-size: 72px;
-    font-family: "Righteous";
-}
-.text {
-    color: #555555;
-    font-size: 24px;
-    font-family: "ABeeZee";
 }
 </style>

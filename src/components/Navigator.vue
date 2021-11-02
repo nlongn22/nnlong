@@ -1,5 +1,5 @@
 <template>
-    <div class="navigator-container" v-bind:class="[changeColor]">
+    <div class="navigator-container" v-bind:class="changeColor">
         <div class="wrapper">
             <div class="scroll-top" v-on:click="nextPage(currentPage + 1)">
                 <arrow-left-icon
