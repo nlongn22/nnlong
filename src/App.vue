@@ -1,20 +1,27 @@
 <template>
     <div id="container">
-        <Navbar v-bind:isHome="page === 0" v-on:jumpToTop="jumpToPage" />
+        <Navbar
+            v-if="!isOpened"
+            v-bind:isHome="page === 0"
+            v-on:jumpToTop="jumpToPage"
+        />
         <Home v-if="page === 0" v-on:setPageNumber="jumpToPage" />
         <About
             v-if="page === 1"
             v-bind:isPrevious="isPrevious"
+            v-on:openMenu="triggerMenu"
             v-on:jumpToPage="jumpToPage"
         />
         <Skills
             v-if="page === 2"
             v-bind:isPrevious="isPrevious"
+            v-on:openMenu="triggerMenu"
             v-on:jumpToPage="jumpToPage"
         />
         <Marketplace
             v-if="page === 3"
             v-bind:isPrevious="isPrevious"
+            v-on:openMenu="triggerMenu"
             v-on:jumpToPage="jumpToPage"
         />
     </div>
@@ -22,6 +29,7 @@
 
 <script>
 import Navbar from "@/components/Navbar.vue";
+import Menu from "@/components/Menu.vue";
 import Home from "@/components/Home.vue";
 import About from "@/components/About.vue";
 import Skills from "@/components/Skills.vue";
@@ -29,6 +37,7 @@ import Marketplace from "@/components/Marketplace.vue";
 export default {
     components: {
         Navbar,
+        Menu,
         Home,
         About,
         Skills,
@@ -105,11 +114,19 @@ export default {
         transform: translateY(0%);
     }
 }
+@keyframes slide-menu-right {
+    0% {
+        left: -500px;
+    }
+    100% {
+        left: 30px;
+    }
+}
 #container {
     position: relative;
 }
 .content-container {
-    padding: 100px;
+    padding: 114px;
 }
 .header {
     margin-bottom: 30px;
@@ -121,5 +138,17 @@ export default {
     color: #555555;
     font-size: 24px;
     font-family: "ABeeZee";
+}
+.menu-icon {
+    position: absolute;
+    top: 50%;
+    color: #cdc9c3;
+    transition: 0.5s;
+    animation: slide-menu-right 1s ease-out forwards;
+}
+.menu-icon:hover {
+    cursor: pointer;
+    color: #555555;
+    transition: 0.5s;
 }
 </style>

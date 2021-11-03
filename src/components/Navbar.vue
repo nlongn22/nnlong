@@ -72,8 +72,7 @@ export default {
     position: fixed;
     z-index: 1;
     width: 100%;
-    animation-name: fade-element;
-    animation-duration: 1s;
+    animation: fade-element 1s;
 }
 .navbar {
     display: flex;

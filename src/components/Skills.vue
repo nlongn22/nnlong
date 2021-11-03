@@ -20,29 +20,54 @@
             </div>
         </div>
         <Scroll v-bind:currentPage="2" v-on:jumpToPage="jumpToPage" />
+        <Navigator
+            v-bind:isHidden="false"
+            v-bind:currentPage="2"
+            v-on:nextPage="jumpToPage"
+        />
+        <align-left-icon
+            size="1.5x"
+            class="menu-icon"
+            v-on:click="triggerMenu()"
+        ></align-left-icon>
+        <Menu
+            v-if="isOpened"
+            v-bind:currentPage="2"
+            v-on:closeMenu="triggerMenu"
+            v-on:jumpToPage="jumpToPage"
+        />
     </div>
-    <Navigator
-        v-bind:isHidden="false"
-        v-bind:currentPage="2"
-        v-on:nextPage="jumpToPage"
-    />
 </template>
 
 <script>
+import { AlignLeftIcon } from "@zhuowenli/vue-feather-icons";
 import Scroll from "./Scroll.vue";
+import Menu from "./Menu.vue";
 import Navigator from "./Navigator.vue";
 export default {
     name: "Skills",
     components: {
+        AlignLeftIcon,
         Scroll,
+        Menu,
         Navigator,
     },
+    emits: ["openMenu", "jumpToPage"],
     props: {
         isPrevious: Boolean,
     },
+    data() {
+        return {
+            isOpened: false,
+        };
+    },
     methods: {
         jumpToPage(pageNumber) {
+            this.isOpened = false;
             this.$emit("jumpToPage", pageNumber);
+        },
+        triggerMenu() {
+            this.isOpened = !this.isOpened;
         },
     },
 };
@@ -50,14 +75,13 @@ export default {
 
 <style scoped>
 .container {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     min-height: 100vh;
     background-color: #d9e4dd;
-    animation-name: slide-container-up;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+    animation: slide-container-up 1s ease-out forwards;
 }
 .container.back {
     animation-name: slide-container-down;

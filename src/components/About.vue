@@ -19,6 +19,17 @@
             </div>
             <Scroll v-bind:currentPage="1" v-on:jumpToPage="jumpToPage" />
         </div>
+        <align-left-icon
+            size="1.5x"
+            class="menu-icon"
+            v-on:click="triggerMenu()"
+        ></align-left-icon>
+        <Menu
+            v-if="isOpened"
+            v-bind:currentPage="1"
+            v-on:closeMenu="triggerMenu"
+            v-on:jumpToPage="jumpToPage"
+        />
         <Navigator
             v-bind:isHidden="true"
             v-bind:currentPage="1"
@@ -28,20 +39,33 @@
 </template>
 
 <script>
+import { AlignLeftIcon } from "@zhuowenli/vue-feather-icons";
 import Scroll from "./Scroll.vue";
+import Menu from "./Menu.vue";
 import Navigator from "./Navigator.vue";
 export default {
     name: "About",
     components: {
+        AlignLeftIcon,
         Scroll,
+        Menu,
         Navigator,
     },
     props: {
         isPrevious: Boolean,
     },
+    data() {
+        return {
+            isOpened: false,
+        };
+    },
     methods: {
         jumpToPage(pageNumber) {
+            this.isOpened = false;
             this.$emit("jumpToPage", pageNumber);
+        },
+        triggerMenu() {
+            this.isOpened = !this.isOpened;
         },
     },
 };
@@ -54,8 +78,7 @@ export default {
     min-height: 100vh;
 }
 .container.back {
-    animation-name: slide-container-down;
-    animation-duration: 1s;
+    animation: slide-container-down 1s ease-out;
 }
 @keyframes slide-left-left {
     0% {
@@ -75,7 +98,7 @@ export default {
 }
 .container-left,
 .container-right {
-    animation-duration: 1s;
+    animation: 1s ease-out;
 }
 .container-left {
     background-color: #d9e4dd;
@@ -90,6 +113,6 @@ export default {
 }
 .container-left.back,
 .container-right.back {
-    animation-name: none;
+    animation: none;
 }
 </style>

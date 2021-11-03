@@ -124,8 +124,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     padding: 30px;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+    animation: 1s ease-out forwards;
 }
 .container-left {
     background-color: #d9e4dd;
@@ -149,15 +148,6 @@ export default {
         top: 90%;
     }
 }
-@keyframes slide-icon-down {
-    0% {
-        top: 0%;
-    }
-    100% {
-        visibility: visible;
-        top: 94%;
-    }
-}
 .scroll {
     position: absolute;
     right: 0%;
@@ -166,24 +156,35 @@ export default {
     margin-right: -7px;
     font-family: "Righteous";
     color: #fbf7f0;
-    animation-name: slide-scroll-down;
-    animation-duration: 1s;
-    animation-delay: 1s;
-    animation-fill-mode: forwards;
+    animation: slide-scroll-down 1s 1s ease-out forwards;
+}
+@keyframes slide-icon-down {
+    0% {
+        top: 0%;
+    }
+    100% {
+        visibility: visible;
+        top: 93.5%;
+    }
+}
+@keyframes bounce-scroll-icon {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(15px);
+    }
 }
 .scroll-icon {
     position: absolute;
     left: 0%;
     visibility: hidden;
     color: #d9e4dd;
-    animation: slide-icon-down;
-    animation-duration: 1s;
-    animation-delay: 1.5s;
-    animation-fill-mode: forwards;
+    animation: slide-icon-down 1s 1.5s ease-out forwards,
+        bounce-scroll-icon 1s cubic-bezier(0.7, 0, 0.3, 1) infinite alternate;
 }
 .smile-icon {
-    animation-name: fade-element;
-    animation-duration: 1s;
+    animation: fade-element 1s;
 }
 @keyframes blink {
     0% {
