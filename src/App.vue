@@ -1,27 +1,20 @@
 <template>
     <div id="container">
-        <Navbar
-            v-if="!isOpened"
-            v-bind:isHome="page === 0"
-            v-on:jumpToTop="jumpToPage"
-        />
+        <Navbar v-bind:isHome="page === 0" v-on:jumpToTop="jumpToPage" />
         <Home v-if="page === 0" v-on:setPageNumber="jumpToPage" />
         <About
             v-if="page === 1"
             v-bind:isPrevious="isPrevious"
-            v-on:openMenu="triggerMenu"
             v-on:jumpToPage="jumpToPage"
         />
         <Skills
             v-if="page === 2"
             v-bind:isPrevious="isPrevious"
-            v-on:openMenu="triggerMenu"
             v-on:jumpToPage="jumpToPage"
         />
         <Marketplace
             v-if="page === 3"
             v-bind:isPrevious="isPrevious"
-            v-on:openMenu="triggerMenu"
             v-on:jumpToPage="jumpToPage"
         />
     </div>
