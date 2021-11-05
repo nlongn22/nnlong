@@ -32,7 +32,7 @@
         ></align-left-icon>
         <Menu
             v-if="isOpened"
-            v-bind:currentPage="2"
+            v-bind:currentPage="3"
             v-on:closeMenu="triggerMenu"
             v-on:jumpToPage="jumpToPage"
         />
@@ -41,9 +41,9 @@
 
 <script>
 import { AlignLeftIcon } from "@zhuowenli/vue-feather-icons";
-import Scroll from "./Scroll.vue";
-import Menu from "./Menu.vue";
-import Navigator from "./Navigator.vue";
+import Scroll from "@/components/Scroll.vue";
+import Menu from "@/components/Menu.vue";
+import Navigator from "@/components/Navigator.vue";
 export default {
     name: "Marketplace",
     components: {

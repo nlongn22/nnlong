@@ -40,9 +40,9 @@
 
 <script>
 import { AlignLeftIcon } from "@zhuowenli/vue-feather-icons";
-import Scroll from "./Scroll.vue";
-import Menu from "./Menu.vue";
-import Navigator from "./Navigator.vue";
+import Scroll from "@/components/Scroll.vue";
+import Menu from "@/components/Menu.vue";
+import Navigator from "@/components/Navigator.vue";
 export default {
     name: "About",
     components: {

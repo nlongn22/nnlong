@@ -23,10 +23,10 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
 import Menu from "@/components/Menu.vue";
-import Home from "@/components/Home.vue";
-import About from "@/components/About.vue";
-import Skills from "@/components/Skills.vue";
-import Marketplace from "@/components/Marketplace.vue";
+import Home from "@/views/Home.vue";
+import About from "@/views/About.vue";
+import Skills from "@/views/Skills.vue";
+import Marketplace from "@/views/Marketplace.vue";
 export default {
     components: {
         Navbar,
