@@ -1,43 +1,22 @@
 <template>
-    <transition name="slide" mode="out-in">
-        <div class="menu-container">
-            <div class="link-wrapper">
-                <div
-                    class="header"
-                    v-bind:class="{ current: currentPage === 1 }"
-                    v-on:click="jumpToPage(1)"
-                >
-                    About me
-                </div>
-                <div
-                    class="header"
-                    v-bind:class="{ current: currentPage === 2 }"
-                    v-on:click="jumpToPage(2)"
-                >
-                    Technologies I'm familiar with
-                </div>
-                <div
-                    class="header"
-                    v-bind:class="{ current: currentPage === 3 }"
-                    v-on:click="jumpToPage(3)"
-                >
-                    MechMarket.eu
-                </div>
-                <div
-                    class="header"
-                    v-bind:class="{ current: currentPage === 4 }"
-                    v-on:click="jumpToPage(4)"
-                >
-                    Weather-Wizard.xyz
-                </div>
+    <div class="menu-container">
+        <div class="link-wrapper">
+            <div
+                class="header"
+                v-for="(header, index) in headerArray"
+                v-bind:key="header.id"
+                v-bind:class="{ current: currentPage === index + 1 }"
+                v-on:click="jumpToPage(index + 1)"
+            >
+                {{ header }}
             </div>
-            <chevrons-left-icon
-                size="3x"
-                class="close-icon"
-                v-on:click="closeMenu()"
-            ></chevrons-left-icon>
         </div>
-    </transition>
+        <chevrons-left-icon
+            size="3x"
+            class="close-icon"
+            v-on:click="closeMenu()"
+        ></chevrons-left-icon>
+    </div>
 </template>
 
 <script>
@@ -49,6 +28,16 @@ export default {
     },
     props: {
         currentPage: null,
+    },
+    data() {
+        return {
+            headerArray: [
+                "About me",
+                "Technologies I'm familiar with",
+                "MechMarket.eu",
+                "Weather-Wizard.xyz",
+            ],
+        };
     },
     methods: {
         closeMenu() {

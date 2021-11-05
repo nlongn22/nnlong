@@ -65,9 +65,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-    font-family: "Righteous";
-}
 .navbar-container {
     position: fixed;
     z-index: 1;
@@ -81,6 +78,7 @@ export default {
     padding: 30px;
 }
 .title {
+    font-family: "Righteous";
     color: #fbf7f0;
 }
 #home {
