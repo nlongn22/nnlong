@@ -29,11 +29,7 @@
             </div>
         </div>
         <Scroll v-bind:currentPage="3" v-on:jumpToPage="jumpToPage" />
-        <Navigator
-            v-bind:isHidden="false"
-            v-bind:currentPage="3"
-            v-on:nextPage="jumpToPage"
-        />
+        <Navigator v-bind:currentPage="3" v-on:nextPage="jumpToPage" />
         <align-left-icon
             size="1.5x"
             class="menu-icon"

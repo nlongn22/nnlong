@@ -30,11 +30,7 @@
             v-on:closeMenu="triggerMenu"
             v-on:jumpToPage="jumpToPage"
         />
-        <Navigator
-            v-bind:isHidden="true"
-            v-bind:currentPage="1"
-            v-on:nextPage="jumpToPage"
-        />
+        <Navigator v-bind:currentPage="1" v-on:nextPage="jumpToPage" />
     </div>
 </template>
 

@@ -1,7 +1,11 @@
 <template>
     <div class="navigator-container" v-bind:class="changeColor">
         <div class="wrapper">
-            <div class="scroll-top" v-on:click="nextPage(currentPage + 1)">
+            <div
+                class="scroll-top"
+                v-if="currentPage !== 4"
+                v-on:click="nextPage(currentPage + 1)"
+            >
                 <arrow-left-icon
                     size="1.5x"
                     class="down-icon"
@@ -10,7 +14,7 @@
             </div>
             <div
                 class="scroll-bottom"
-                v-if="!isHidden"
+                v-if="currentPage !== 1"
                 v-on:click="nextPage(1)"
             >
                 <div class="direction">Top</div>
@@ -28,7 +32,6 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@zhuowenli/vue-feather-icons";
 export default {
     name: "Navigator",
     props: {
-        isHidden: Boolean,
         currentPage: null,
     },
     components: {
@@ -39,10 +42,7 @@ export default {
         changeColor: function () {
             return {
                 green: this.currentPage === 1,
-                white:
-                    this.currentPage === 2 ||
-                    this.currentPage === 3 ||
-                    this.currentPage === 4,
+                white: this.currentPage > 1,
             };
         },
     },
