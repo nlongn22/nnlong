@@ -39,20 +39,33 @@ export default {
         return {
             page: 0,
             isPrevious: false,
+            timestamp: null,
         };
     },
     methods: {
+        getTimestamp() {
+            let minutes = new Date().getMinutes();
+            let seconds = new Date().getSeconds();
+            let miliseconds = new Date().getMilliseconds();
+            let fullTime = seconds * 1000 + minutes * 60000 + miliseconds;
+            return fullTime;
+        },
         triggerComponent(event) {
+            if (this.getTimestamp() - this.timestamp <= 500) {
+                return;
+            } else {
+                this.timestamp = this.getTimestamp();
+            }
             let scrollDistance = event.deltaY;
             switch (true) {
-                case scrollDistance > 15:
+                case scrollDistance > 0:
                     this.isPrevious = false;
                     this.page += 1;
                     if (this.page >= 4) {
                         this.page = 4;
                     }
                     break;
-                case scrollDistance < -15:
+                case scrollDistance < 0:
                     this.isPrevious = true;
                     this.page -= 1;
                     if (this.page <= 1) {
@@ -72,6 +85,7 @@ export default {
     },
     mounted() {
         window.addEventListener("wheel", this.triggerComponent);
+        this.timestamp = this.getTimestamp();
     },
     beforeUnmount() {
         window.removeEventListener("wheel", this.triggerComponent);
