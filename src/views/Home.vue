@@ -97,24 +97,20 @@ export default {
     opacity: 0;
     transition: 0.5s;
 }
-.container {
-    display: flex;
-    min-height: 100vh;
-}
 @keyframes slide-left-left {
     0% {
-        flex-basis: 0%;
+        width: 0%;
     }
     100% {
-        flex-basis: 50%;
+        width: 50%;
     }
 }
 @keyframes slide-right-left {
     0% {
-        flex-basis: 100%;
+        width: 100%;
     }
     100% {
-        flex-basis: 50%;
+        width: 50%;
     }
 }
 .container-left,

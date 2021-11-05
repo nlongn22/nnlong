@@ -1,21 +1,21 @@
 <template>
     <div class="container">
         <div class="wrapper-left">
-            <img src="@/assets/marketplace/latest.jpeg" v-if="delayEnded" />
+            <img src="@/assets/weather/weather.jpeg" v-if="delayEnded" />
         </div>
         <div class="wrapper-right">
             <div class="wrapper">
                 <div class="header">
                     <div>
-                        <a href="https://mechmarket.eu/" target="”_blank”"
-                            >MechMarket.eu</a
+                        <a href="https://weather-wizard.xyz/" target="”_blank”"
+                            >Weather-Wizard.xyz</a
                         >
                     </div>
                 </div>
                 <div class="text">
                     <ul>
                         <li
-                            v-for="text in marketplaceTextArray"
+                            v-for="text in weatherTextArray"
                             v-bind:key="text.id"
                         >
                             <check-icon
@@ -28,10 +28,10 @@
                 </div>
             </div>
         </div>
-        <Scroll v-bind:currentPage="3" v-on:jumpToPage="jumpToPage" />
+        <Scroll v-bind:currentPage="4" v-on:jumpToPage="jumpToPage" />
         <Navigator
             v-bind:isHidden="false"
-            v-bind:currentPage="3"
+            v-bind:currentPage="4"
             v-on:nextPage="jumpToPage"
         />
         <align-left-icon
@@ -41,7 +41,7 @@
         ></align-left-icon>
         <Menu
             v-if="isOpened"
-            v-bind:currentPage="3"
+            v-bind:currentPage="4"
             v-on:closeMenu="triggerMenu"
             v-on:jumpToPage="jumpToPage"
         />
@@ -54,7 +54,7 @@ import Scroll from "@/components/Scroll.vue";
 import Menu from "@/components/Menu.vue";
 import Navigator from "@/components/Navigator.vue";
 export default {
-    name: "Marketplace",
+    name: "Weather",
     components: {
         AlignLeftIcon,
         CheckIcon,
@@ -64,12 +64,11 @@ export default {
     },
     data() {
         return {
-            marketplaceTextArray: [
-                "Fully-featured marketplace for mechanical keyboards",
-                "CRUD operations (Create, Read, Update, Delete posts)",
-                "Search posts, review users",
-                "Including details, user’s, saved and posts pages ",
-                "Supports image upload",
+            weatherTextArray: [
+                "Beautiful & simple weather dashboard",
+                "Add any place using Google Maps autocomplete",
+                "View current conditions (e. i. humidity, UV indexwind speed and more)",
+                "Toggle between hourly and weekly views",
             ],
             isOpened: false,
             delayEnded: false,
@@ -91,4 +90,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+img {
+    object-fit: contain;
+}
+</style>

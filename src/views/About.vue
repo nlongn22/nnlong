@@ -72,28 +72,23 @@ export default {
 </script>
 
 <style scoped>
-.container {
-    position: relative;
-    display: flex;
-    min-height: 100vh;
-}
 .container.back {
     animation: slide-container-down 1s ease-out;
 }
 @keyframes slide-left-left {
     0% {
-        flex-basis: 50%;
+        width: 50%;
     }
     100% {
-        flex-basis: 0%;
+        width: 0%;
     }
 }
 @keyframes slide-right-left {
     0% {
-        flex-basis: 50%;
+        width: 50%;
     }
     100% {
-        flex-basis: 100%;
+        width: 100%;
     }
 }
 .container-left,

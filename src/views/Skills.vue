@@ -75,11 +75,8 @@ export default {
 
 <style scoped>
 .container {
-    position: relative;
-    display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 100vh;
     background-color: #d9e4dd;
     animation: slide-container-up 1s ease-out forwards;
 }

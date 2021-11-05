@@ -38,8 +38,11 @@ export default {
     computed: {
         changeColor: function () {
             return {
-                green: this.currentPage % 2 !== 0,
-                white: this.currentPage % 2 === 0,
+                green: this.currentPage === 1,
+                white:
+                    this.currentPage === 2 ||
+                    this.currentPage === 3 ||
+                    this.currentPage === 4,
             };
         },
     },
