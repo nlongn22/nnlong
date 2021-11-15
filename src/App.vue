@@ -128,13 +128,15 @@ export default {
     color: #555555;
     font-size: 72px;
     font-family: "Righteous";
+    animation: fade-element 1s ease-out;
 }
 .text {
     color: #555555;
     font-size: 24px;
     font-family: "ABeeZee";
+    animation: fade-element 1s ease-out;
 }
-@keyframes slide-menu-right {
+@keyframes slide-menu-icon-right {
     0% {
         left: -500px;
     }
@@ -148,7 +150,7 @@ export default {
     transform: translateY(-50%);
     color: #cdc9c3;
     transition: 0.5s;
-    animation: slide-menu-right 1s ease-out forwards;
+    animation: slide-menu-icon-right 1s ease-out forwards;
 }
 .menu-icon:hover {
     cursor: pointer;
@@ -238,5 +240,11 @@ a:active:hover {
     background-color: #fbf7f0;
     animation: slide-wrapper-right 1s ease-out forwards,
         padding 0.3s 1s ease-out forwards;
+}
+.wrapper-left.next,
+.wrapper-right.next {
+    width: 50%;
+    padding: 114px;
+    animation: none;
 }
 </style>

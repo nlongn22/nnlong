@@ -5,14 +5,14 @@
         </div>
         <div class="wrapper-right">
             <div class="wrapper">
-                <div class="header">
+                <div class="header" v-if="isShown">
                     <div>
                         <a href="https://mechmarket.eu/" target="”_blank”"
                             >MechMarket.eu</a
                         >
                     </div>
                 </div>
-                <div class="text">
+                <div class="text" v-if="isShown">
                     <ul>
                         <li
                             v-for="text in marketplaceTextArray"
@@ -68,6 +68,7 @@ export default {
                 "Supports image upload",
             ],
             isOpened: false,
+            isShown: false,
             delayEnded: false,
         };
     },
@@ -78,8 +79,18 @@ export default {
         triggerMenu() {
             this.isOpened = !this.isOpened;
         },
+        showElement() {
+            if (!this.isPrevious) {
+                setTimeout(() => {
+                    this.isShown = true;
+                }, 1500);
+            } else {
+                this.isShown = true;
+            }
+        },
     },
     mounted() {
+        this.showElement();
         setTimeout(() => {
             this.delayEnded = true;
         }, 1000);

@@ -1,18 +1,18 @@
 <template>
     <div class="container">
-        <div class="wrapper-left">
+        <div class="wrapper-left" v-bind:class="{ next: isNext }">
             <img src="@/assets/weather/weather.jpeg" v-if="delayEnded" />
         </div>
-        <div class="wrapper-right">
+        <div class="wrapper-right" v-bind:class="{ next: isNext }">
             <div class="wrapper">
-                <div class="header">
+                <div class="header" v-if="isShown">
                     <div>
                         <a href="https://weather-wizard.xyz/" target="”_blank”"
                             >Weather-Wizard.xyz</a
                         >
                     </div>
                 </div>
-                <div class="text">
+                <div class="text" v-if="isShown">
                     <ul>
                         <li
                             v-for="text in weatherTextArray"
@@ -71,6 +71,7 @@ export default {
                 "Toggle between hourly and weekly views",
             ],
             isOpened: false,
+            isShown: false,
             delayEnded: false,
         };
     },
@@ -81,8 +82,18 @@ export default {
         triggerMenu() {
             this.isOpened = !this.isOpened;
         },
+        showElement() {
+            if (!this.isPrevious) {
+                setTimeout(() => {
+                    this.isShown = true;
+                }, 1500);
+            } else {
+                this.isShown = true;
+            }
+        },
     },
     mounted() {
+        this.showElement();
         setTimeout(() => {
             this.delayEnded = true;
         }, 1000);

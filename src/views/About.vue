@@ -3,10 +3,10 @@
         <div class="container-left" v-bind:class="{ back: isPrevious }"></div>
         <div class="container-right" v-bind:class="{ back: isPrevious }">
             <div class="content-container">
-                <div class="header">
+                <div class="header" v-if="isShown">
                     <div>About me</div>
                 </div>
-                <div class="text">
+                <div class="text" v-if="isShown">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Placeat laborum libero alias saepe ducimus consectetur
                     incidunt error laboriosam expedita totam officiis explicabo
@@ -53,6 +53,7 @@ export default {
     data() {
         return {
             isOpened: false,
+            isShown: false,
         };
     },
     methods: {
@@ -63,6 +64,18 @@ export default {
         triggerMenu() {
             this.isOpened = !this.isOpened;
         },
+        showElement() {
+            if (!this.isPrevious) {
+                setTimeout(() => {
+                    this.isShown = true;
+                }, 1000);
+            } else {
+                this.isShown = true;
+            }
+        },
+    },
+    mounted() {
+        this.showElement();
     },
 };
 </script>

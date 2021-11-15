@@ -1,6 +1,7 @@
 <template>
     <div class="menu-container">
-        <div class="link-wrapper">
+        <div class="link"></div>
+        <div class="link-wrapper" v-if="isShown">
             <div
                 class="header"
                 v-for="(header, index) in headerArray"
@@ -14,6 +15,7 @@
         <chevrons-left-icon
             size="3x"
             class="close-icon"
+            v-if="isShown"
             v-on:click="closeMenu()"
         ></chevrons-left-icon>
     </div>
@@ -37,6 +39,7 @@ export default {
                 "MechMarket.eu",
                 "Weather-Wizard.xyz",
             ],
+            isShown: false,
         };
     },
     methods: {
@@ -46,6 +49,14 @@ export default {
         jumpToPage(pageNumber) {
             this.$emit("jumpToPage", pageNumber);
         },
+        showElement() {
+            this.isShown = true;
+        },
+    },
+    mounted() {
+        setTimeout(() => {
+            this.showElement();
+        }, 500);
     },
 };
 </script>
@@ -74,6 +85,7 @@ export default {
     min-height: inherit;
     z-index: 999;
     width: inherit;
+    animation: fade-element 0.5s ease-out;
 }
 .header.current {
     text-decoration: underline;
@@ -98,8 +110,20 @@ export default {
     color: black;
     transition: 0.5s;
 }
+@keyframes slide-close-icon-left {
+    0% {
+        transform: translateX(7px);
+    }
+    100% {
+        visibility: visible;
+        transform: translateX(0px);
+    }
+}
 .close-icon {
     margin-left: 30px;
     margin-right: 60px;
+    visibility: hidden;
+    animation: slide-close-icon-left 1s ease-out forwards,
+        fade-element 0.5s ease-out;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="navigator-container" v-bind:class="changeColor">
+    <div class="navigator-container">
         <div class="wrapper">
             <div
                 class="scroll-top"
@@ -38,14 +38,6 @@ export default {
         ArrowLeftIcon,
         ArrowRightIcon,
     },
-    computed: {
-        changeColor: function () {
-            return {
-                green: this.currentPage === 1,
-                white: this.currentPage > 1,
-            };
-        },
-    },
     methods: {
         nextPage(pageNumber) {
             this.$emit("nextPage", pageNumber);
@@ -71,14 +63,8 @@ export default {
     transform: rotate(-90deg) translate(43%, -325%);
     margin-bottom: 30px;
     visibility: hidden;
-    color: #d9e4dd;
+    color: #cdc9c3;
     animation: slide-navigator-up 1s ease-out forwards;
-}
-.navigator-container.green {
-    color: #d9e4dd;
-}
-.navigator-container.white {
-    color: #fbf7f0;
 }
 .wrapper {
     display: flex;
