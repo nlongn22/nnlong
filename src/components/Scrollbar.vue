@@ -1,4 +1,5 @@
 <template>
+    <!-- I KNOW THIS COMPONENT IS UGLY :( -->
     <div class="pagination-container">
         <div class="pagination" v-if="currentPage === 1">
             <div class="circle" v-bind:class="{ about: currentPage === 1 }">
@@ -86,7 +87,7 @@
 
 <script>
 export default {
-    name: "Scroll",
+    name: "Scrollbar",
     props: {
         currentPage: null,
     },

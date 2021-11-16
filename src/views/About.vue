@@ -6,18 +6,27 @@
                 <div class="header" v-if="isShown">
                     <div>About me</div>
                 </div>
-                <div class="text" v-if="isShown">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Placeat laborum libero alias saepe ducimus consectetur
-                    incidunt error laboriosam expedita totam officiis explicabo
-                    voluptates reiciendis quos, ipsum nihil eveniet sit amet!
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Reiciendis, dolorem. Quas debitis earum dolorum quasi modi,
-                    ea commodi iusto placeat dolores voluptates. Libero eum
-                    natus est. Quas doloribus obcaecati quibusdam!
-                </div>
+                <p class="text" v-if="isShown">
+                    Hey! My name is Ngoc Long Nguyen but most of my friends call
+                    me Filip. I'm a full stack web developer who currently lives
+                    in Munich, Germany. I am 20 years old and after high school
+                    I've decided to take a gap year before entering university
+                    to properly learn German. After finishing high school this
+                    summer, I decided to start learning the basics of web
+                    development. After a few months and a couple of projects,
+                    I'm looking for a job in this field either as an intern or a
+                    junior developer.
+                </p>
+                <p class="text" v-if="isShown">
+                    In my free time (when I'm not learning anything) I like to
+                    read books and hang out with my friends. I'm quite a big fan
+                    of Formula 1 so every weekend is spent watching races and
+                    following news around this amazing sport. To stay in shape,
+                    I try to run at least three times a week to stay healthy and
+                    clear my head.
+                </p>
             </div>
-            <Scroll v-bind:currentPage="1" v-on:jumpToPage="jumpToPage" />
+            <Scrollbar v-bind:currentPage="1" v-on:jumpToPage="jumpToPage" />
         </div>
         <align-left-icon
             size="1.5x"
@@ -36,14 +45,14 @@
 
 <script>
 import { AlignLeftIcon } from "@zhuowenli/vue-feather-icons";
-import Scroll from "@/components/Scroll.vue";
+import Scrollbar from "@/components/Scrollbar.vue";
 import Menu from "@/components/Menu.vue";
 import Navigator from "@/components/Navigator.vue";
 export default {
     name: "About",
     components: {
         AlignLeftIcon,
-        Scroll,
+        Scrollbar,
         Menu,
         Navigator,
     },

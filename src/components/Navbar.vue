@@ -26,13 +26,22 @@
                           },
                 ]"
             >
-                <instagram-icon size="1.5x" class="icon"></instagram-icon>
-                <linkedin-icon
-                    size="1.5x"
-                    class="icon"
-                    id="linkedin"
-                ></linkedin-icon>
-                <github-icon size="1.5x" class="icon"></github-icon>
+                <a href="https://www.instagram.com/nlongn22/" target="_blank">
+                    <instagram-icon size="1.5x" class="icon"></instagram-icon>
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/ngoc-long-nguyen-2b0387219/"
+                    target="_blank"
+                >
+                    <linkedin-icon
+                        size="1.5x"
+                        class="icon"
+                        id="linkedin"
+                    ></linkedin-icon>
+                </a>
+                <a href="https://github.com/bobby-22" target="_blank">
+                    <github-icon size="1.5x" class="icon"></github-icon
+                ></a>
             </div>
         </div>
     </div>
@@ -103,5 +112,15 @@ export default {
 #linkedin {
     margin-left: 15px;
     margin-right: 15px;
+}
+a:link,
+a:visited,
+a:active {
+    color: inherit;
+}
+a:link:hover,
+a:visited:hover,
+a:active:hover {
+    color: inherit;
 }
 </style>

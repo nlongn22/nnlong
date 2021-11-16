@@ -98,6 +98,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
 @keyframes slide-container-up {
     0% {
+        background-color: transparent;
         transform: translateY(100%);
     }
     100% {
@@ -106,6 +107,7 @@ export default {
 }
 @keyframes slide-container-down {
     0% {
+        background-color: transparent;
         transform: translateY(-100%);
     }
     100% {
@@ -132,6 +134,7 @@ export default {
 }
 .text {
     color: #555555;
+    line-height: 1.25;
     font-size: 24px;
     font-family: "ABeeZee";
     animation: fade-element 1s ease-out;

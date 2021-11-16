@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <Scroll v-bind:currentPage="3" v-on:jumpToPage="jumpToPage" />
+        <Scrollbar v-bind:currentPage="3" v-on:jumpToPage="jumpToPage" />
         <Navigator v-bind:currentPage="3" v-on:nextPage="jumpToPage" />
         <align-left-icon
             size="1.5x"
@@ -46,7 +46,7 @@
 
 <script>
 import { AlignLeftIcon, CheckIcon } from "@zhuowenli/vue-feather-icons";
-import Scroll from "@/components/Scroll.vue";
+import Scrollbar from "@/components/Scrollbar.vue";
 import Menu from "@/components/Menu.vue";
 import Navigator from "@/components/Navigator.vue";
 export default {
@@ -54,7 +54,7 @@ export default {
     components: {
         AlignLeftIcon,
         CheckIcon,
-        Scroll,
+        Scrollbar,
         Menu,
         Navigator,
     },
