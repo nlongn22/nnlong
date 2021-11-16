@@ -75,9 +75,13 @@ export default {
                 this.isShown = true;
             }
         },
+        setTitle() {
+            document.title = "Technologies";
+        },
     },
     mounted() {
         this.showElement();
+        this.setTitle();
     },
 };
 </script>

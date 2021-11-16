@@ -7,7 +7,7 @@
                     <div>About me</div>
                 </div>
                 <p class="text" v-if="isShown">
-                    Hey! My name is Ngoc Long Nguyen but most of my friends call
+                    Hey! My name is Nguyen Ngoc Long but most of my friends call
                     me Filip. I'm a full stack web developer who currently lives
                     in Munich, Germany. I am 20 years old and after high school
                     I've decided to take a gap year before entering university
@@ -82,9 +82,13 @@ export default {
                 this.isShown = true;
             }
         },
+        setTitle() {
+            document.title = "About me";
+        },
     },
     mounted() {
         this.showElement();
+        this.setTitle();
     },
 };
 </script>

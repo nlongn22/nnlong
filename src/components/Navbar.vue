@@ -13,7 +13,7 @@
             >
                 <div class="name" v-on:click="jumpToTop()">
                     <home-icon size="1.5x" id="home"></home-icon>
-                    Ngoc Long Nguyen
+                    Nguyen Ngoc Long
                 </div>
             </div>
             <div

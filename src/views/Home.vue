@@ -82,11 +82,15 @@ export default {
                 })
             );
         },
+        setTitle() {
+            document.title = "Nguyen Ngoc Long";
+        },
     },
     mounted() {
         setTimeout(() => {
             this.chainPromises();
         }, 2250);
+        this.setTitle();
     },
 };
 </script>

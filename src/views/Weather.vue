@@ -91,12 +91,16 @@ export default {
                 this.isShown = true;
             }
         },
+        setTitle() {
+            document.title = "Weather-Wizard.xyz";
+        },
     },
     mounted() {
         this.showElement();
         setTimeout(() => {
             this.delayEnded = true;
         }, 1000);
+        this.setTitle();
     },
 };
 </script>
