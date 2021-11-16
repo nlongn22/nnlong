@@ -10,7 +10,7 @@
                     size="1.5x"
                     class="down-icon"
                 ></arrow-left-icon>
-                <div class="direction">Scroll</div>
+                <div class="direction">Scrolll</div>
             </div>
             <div
                 class="scroll-bottom"
