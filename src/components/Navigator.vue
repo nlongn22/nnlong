@@ -14,6 +14,7 @@
             </div>
             <div
                 class="scroll-bottom"
+                v-if="currentPage !== 1"
                 v-on:click="nextPage(1)"
             >
                 <div class="direction">Top</div>
