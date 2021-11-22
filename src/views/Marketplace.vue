@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="wrapper-left">
-            <img src="@/assets/marketplace/latest.jpeg" v-if="delayEnded" />
+            <img src="@/assets/marketplace/latest.png" v-if="delayEnded" />
         </div>
         <div class="wrapper-right">
             <div class="wrapper">

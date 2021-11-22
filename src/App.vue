@@ -175,7 +175,6 @@ export default {
 img {
     height: 100%;
     width: 100%;
-    border-radius: 5px;
     animation: fade-element 0.5s ease-out;
 }
 ul {
