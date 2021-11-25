@@ -173,7 +173,7 @@ export default {
     }
 }
 img {
-    height: 100%;
+    height: auto;
     width: 100%;
     animation: fade-element 0.5s ease-out;
 }
@@ -248,5 +248,8 @@ a:active:hover {
     width: 50%;
     padding: 114px;
     animation: none;
+}
+::selection {
+    background-color: #f6d7a7;
 }
 </style>

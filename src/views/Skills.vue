@@ -5,18 +5,35 @@
                 <div>Technologies I'm familiar with</div>
             </div>
             <div class="text" v-if="isShown">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Placeat laborum libero alias saepe ducimus consectetur incidunt
-                error laboriosam expedita totam officiis explicabo voluptates
-                reiciendis quos, ipsum nihil eveniet sit amet! Lorem ipsum dolor
-                sit amet consectetur adipisicing elit. Reiciendis, dolorem. Quas
-                debitis earum dolorum quasi modi, ea commodi iusto placeat
-                dolores voluptates. Libero eum natus est. Quas doloribus
-                obcaecati quibusdam! Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Neque iure obcaecati quaerat doloremque harum
-                ipsa repudiandae nulla, blanditiis beatae reiciendis
-                consectetur, dicta reprehenderit quis, impedit modi. Magnam amet
-                odio ex!
+                <div class="languages">
+                    <ul>
+                        <li><i class="fab fa-python"></i>Python</li>
+                        <li><i class="fab fa-js-square"></i>Javascript</li>
+                        <li><i class="fab fa-css3-alt"></i>CSS</li>
+                        <li><i class="fab fa-html5"></i>HTML</li>
+                    </ul>
+                </div>
+                <div class="frameworks">
+                    <ul>
+                        <li><i class="fab fa-python"></i>Django</li>
+                        <li><i class="fab fa-vuejs"></i>Vue.js</li>
+                        <li>
+                            <i class="fab fa-bootstrap"></i>Bootstrap, Bulma
+                        </li>
+                    </ul>
+                </div>
+                <div class="others">
+                    <ul>
+                        <li><i class="fas fa-database"></i>SQL</li>
+                        <li><i class="fas fa-server"></i>REST API</li>
+                    </ul>
+                </div>
+                <div class="techniques">
+                    <ul>
+                        <li><i class="fab fa-git"></i>Git & Github</li>
+                        <li><i class="fab fa-aws"></i>AWS S3</li>
+                    </ul>
+                </div>
             </div>
         </div>
         <Scrollbar v-bind:currentPage="2" v-on:jumpToPage="jumpToPage" />
@@ -95,5 +112,16 @@ export default {
 }
 .container.back {
     animation-name: slide-container-down;
+}
+.text {
+    display: flex;
+    justify-content: space-between;
+}
+li {
+    display: flex;
+    align-items: center;
+}
+i {
+    margin-right: 10px;
 }
 </style>
