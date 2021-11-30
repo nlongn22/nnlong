@@ -178,7 +178,6 @@ img {
     animation: fade-element 0.5s ease-out;
 }
 ul {
-    list-style-type: none;
     margin: 0;
     padding: 0;
 }

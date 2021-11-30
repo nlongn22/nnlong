@@ -18,10 +18,6 @@
                             v-for="text in marketplaceTextArray"
                             v-bind:key="text.id"
                         >
-                            <check-icon
-                                size="1x"
-                                class="check-icon"
-                            ></check-icon>
                             {{ text }}
                         </li>
                     </ul>
@@ -45,7 +41,7 @@
 </template>
 
 <script>
-import { AlignLeftIcon, CheckIcon } from "@zhuowenli/vue-feather-icons";
+import { AlignLeftIcon } from "@zhuowenli/vue-feather-icons";
 import Scrollbar from "@/components/Scrollbar.vue";
 import Menu from "@/components/Menu.vue";
 import Navigator from "@/components/Navigator.vue";
@@ -53,7 +49,6 @@ export default {
     name: "Marketplace",
     components: {
         AlignLeftIcon,
-        CheckIcon,
         Scrollbar,
         Menu,
         Navigator,
@@ -102,4 +97,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+li {
+    display: list-item;
+    list-style-type: circle;
+}
+</style>

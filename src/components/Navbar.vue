@@ -26,22 +26,24 @@
                           },
                 ]"
             >
-                <a href="https://www.instagram.com/nlongn22/" target="_blank">
-                    <instagram-icon size="1.5x" class="icon"></instagram-icon>
+                <a
+                    href="https://drive.google.com/file/d/1If3ThohhVvsp9GnuGNg5i9gDZDlACUJc/view?usp=sharing"
+                    target="_blank"
+                >
+                    <file-text-icon size="1.5x" class="icon"></file-text-icon>
                 </a>
                 <a
                     href="https://www.linkedin.com/in/ngoc-long-nguyen-2b0387219/"
                     target="_blank"
                 >
-                    <linkedin-icon
-                        size="1.5x"
-                        class="icon"
-                        id="linkedin"
-                    ></linkedin-icon>
+                    <linkedin-icon size="1.5x" class="icon"></linkedin-icon>
                 </a>
-                <a href="https://github.com/bobby-22" target="_blank">
+                <a href="https://github.com/longino22" target="_blank">
                     <github-icon size="1.5x" class="icon"></github-icon
                 ></a>
+                <a href="https://www.instagram.com/nlongn22/" target="_blank">
+                    <instagram-icon size="1.5x" class="icon"></instagram-icon>
+                </a>
             </div>
         </div>
     </div>
@@ -53,6 +55,7 @@ import {
     InstagramIcon,
     LinkedinIcon,
     GithubIcon,
+    FileTextIcon,
 } from "@zhuowenli/vue-feather-icons";
 export default {
     name: "Navbar",
@@ -64,6 +67,7 @@ export default {
         InstagramIcon,
         LinkedinIcon,
         GithubIcon,
+        FileTextIcon,
     },
     methods: {
         jumpToTop() {
@@ -99,8 +103,12 @@ export default {
     transition: 0.5s;
 }
 .links {
-    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 15px;
     color: #d9e4dd;
+}
+.icon {
     transition: 0.5s;
 }
 .name:hover,
@@ -108,10 +116,6 @@ export default {
     cursor: pointer;
     color: #555555;
     transition: 0.5s;
-}
-#linkedin {
-    margin-left: 15px;
-    margin-right: 15px;
 }
 a:link,
 a:visited,

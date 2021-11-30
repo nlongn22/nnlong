@@ -18,10 +18,6 @@
                             v-for="text in weatherTextArray"
                             v-bind:key="text.id"
                         >
-                            <check-icon
-                                size="1x"
-                                class="check-icon"
-                            ></check-icon>
                             {{ text }}
                         </li>
                     </ul>
@@ -49,7 +45,7 @@
 </template>
 
 <script>
-import { AlignLeftIcon, CheckIcon } from "@zhuowenli/vue-feather-icons";
+import { AlignLeftIcon } from "@zhuowenli/vue-feather-icons";
 import Scrollbar from "@/components/Scrollbar.vue";
 import Menu from "@/components/Menu.vue";
 import Navigator from "@/components/Navigator.vue";
@@ -57,7 +53,6 @@ export default {
     name: "Weather",
     components: {
         AlignLeftIcon,
-        CheckIcon,
         Scrollbar,
         Menu,
         Navigator,
@@ -108,5 +103,9 @@ export default {
 <style scoped>
 img {
     object-fit: contain;
+}
+li {
+    display: list-item;
+    list-style-type: circle;
 }
 </style>
