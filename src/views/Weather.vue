@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-        <div class="wrapper-left" v-bind:class="{ next: isNext }">
+        <div class="wrapper-left">
             <img src="@/assets/weather/weather.jpeg" v-if="delayEnded" />
         </div>
-        <div class="wrapper-right" v-bind:class="{ next: isNext }">
+        <div class="wrapper-right">
             <div class="wrapper">
                 <div class="header" v-if="isShown">
                     <div>
@@ -19,6 +19,9 @@
                             v-bind:key="text.id"
                         >
                             {{ text }}
+                        </li>
+                        <li>
+                            <u>Technologies:</u> Google Maps API; Vue.js, CSS
                         </li>
                     </ul>
                 </div>
@@ -60,10 +63,10 @@ export default {
     data() {
         return {
             weatherTextArray: [
-                "Beautiful & simple weather dashboard",
-                "Add any place using Google Maps autocomplete",
-                "View current conditions (e. i. humidity, UV indexwind speed and more)",
-                "Toggle between hourly and weekly views",
+                "Created a beautiful weather dashboard",
+                "Implemented Google Maps API for predictive searching of any location",
+                "At glance conditions such as humidity, wind speed, UV index and more",
+                "Additional features include filtering by weekly or hourly conditions",
             ],
             isOpened: false,
             isShown: false,

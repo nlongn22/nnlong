@@ -20,6 +20,7 @@
                         >
                             {{ text }}
                         </li>
+                        <li><u>Technologies:</u> Django; Vue.js, CSS, Bulma</li>
                     </ul>
                 </div>
             </div>
@@ -56,11 +57,12 @@ export default {
     data() {
         return {
             marketplaceTextArray: [
-                "Fully-featured marketplace for mechanical keyboards",
-                "CRUD operations (Create, Read, Update, Delete posts)",
-                "Search posts, review users",
-                "Including details, user’s, saved and posts pages ",
-                "Supports image upload",
+                "Developed a full-stack marketplace for mechanical keyboards",
+                "Included CRUD operations (Create, Read, Update and Delete posts)",
+                "Implemented authentication (register and login)",
+                "Integrated AWS S3 for uploading and deleting images of keyboards",
+                "Connected server with client using REST API",
+                "Added features such as reviewing sellers, filtering by category, searching by keywords and more",
             ],
             isOpened: false,
             isShown: false,

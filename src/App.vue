@@ -134,7 +134,6 @@ export default {
 }
 .text {
     color: #555555;
-    line-height: 1.25;
     font-size: 24px;
     font-family: "ABeeZee";
     animation: fade-element 1s ease-out;
@@ -159,10 +158,6 @@ export default {
     cursor: pointer;
     color: #555555;
     transition: 0.5s;
-}
-.check-icon {
-    margin-right: 15px;
-    color: #cdc9c3;
 }
 @keyframes fade-element {
     0% {
@@ -241,12 +236,6 @@ a:active:hover {
     background-color: #fbf7f0;
     animation: slide-wrapper-right 1s ease-out forwards,
         padding 0.3s 1s ease-out forwards;
-}
-.wrapper-left.next,
-.wrapper-right.next {
-    width: 50%;
-    padding: 114px;
-    animation: none;
 }
 ::selection {
     background-color: #f6d7a7;

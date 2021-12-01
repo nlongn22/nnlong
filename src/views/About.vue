@@ -132,4 +132,7 @@ export default {
 .container-right.back {
     animation: none;
 }
+.text {
+    line-height: 1.25;
+}
 </style>
