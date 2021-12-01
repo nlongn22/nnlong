@@ -1,13 +1,32 @@
 <template>
     <div class="container">
         <div class="wrapper-left">
-            <img src="@/assets/weather/weather.jpeg" v-if="delayEnded" />
+            <a
+                href="https://weather-wizard.xyz/"
+                title="Go to weather-wizard.xyz"
+                target="”_blank”"
+                class="image-container"
+                @mouseover="this.showLink = true"
+                @mouseleave="this.showLink = false"
+            >
+                <img
+                    src="@/assets/weather/home.png"
+                    class="project-image"
+                    v-if="delayEnded"
+                />
+                <div class="external-link" v-if="showLink">
+                    <external-link-icon size="1.5x"></external-link-icon>
+                </div>
+            </a>
         </div>
         <div class="wrapper-right">
             <div class="wrapper">
                 <div class="header" v-if="isShown">
                     <div>
-                        <a href="https://weather-wizard.xyz/" target="”_blank”"
+                        <a
+                            href="https://weather-wizard.xyz/"
+                            title="Go to weather-wizard.xyz"
+                            target="”_blank”"
                             >Weather-Wizard.xyz</a
                         >
                     </div>
@@ -48,7 +67,7 @@
 </template>
 
 <script>
-import { AlignLeftIcon } from "@zhuowenli/vue-feather-icons";
+import { AlignLeftIcon, ExternalLinkIcon } from "@zhuowenli/vue-feather-icons";
 import Scrollbar from "@/components/Scrollbar.vue";
 import Menu from "@/components/Menu.vue";
 import Navigator from "@/components/Navigator.vue";
@@ -56,6 +75,7 @@ export default {
     name: "Weather",
     components: {
         AlignLeftIcon,
+        ExternalLinkIcon,
         Scrollbar,
         Menu,
         Navigator,
@@ -65,11 +85,12 @@ export default {
             weatherTextArray: [
                 "Created a beautiful weather dashboard",
                 "Implemented Google Maps API for predictive searching of any location",
-                "At glance conditions such as humidity, wind speed, UV index and more",
+                "At glance conditions such as humidity, wind speed, UV index, sunrise & sunset, pressure and more",
                 "Additional features include filtering by weekly or hourly conditions",
             ],
             isOpened: false,
             isShown: false,
+            showLink: false,
             delayEnded: false,
         };
     },
@@ -103,12 +124,4 @@ export default {
 };
 </script>
 
-<style scoped>
-img {
-    object-fit: contain;
-}
-li {
-    display: list-item;
-    list-style-type: circle;
-}
-</style>
+<style scoped></style>

@@ -114,6 +114,9 @@ export default {
         transform: translateY(0%);
     }
 }
+::selection {
+    background-color: #f6d7a7;
+}
 #container {
     position: relative;
 }
@@ -170,6 +173,7 @@ export default {
 img {
     height: auto;
     width: 100%;
+    border-radius: 15px;
     animation: fade-element 0.5s ease-out;
 }
 ul {
@@ -180,6 +184,8 @@ li {
     display: flex;
     align-items: flex-start;
     margin-bottom: 25px;
+    display: list-item;
+    list-style-type: circle;
 }
 a:link,
 a:visited,
@@ -237,7 +243,23 @@ a:active:hover {
     animation: slide-wrapper-right 1s ease-out forwards,
         padding 0.3s 1s ease-out forwards;
 }
-::selection {
-    background-color: #f6d7a7;
+.image-container {
+    position: relative;
+}
+.project-image {
+    transition: 0.5s;
+}
+.project-image:hover {
+    filter: brightness(0.5);
+    transition: 0.5s;
+}
+.external-link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fbf7f0;
+    font-size: 24px;
+    animation: fade-element 0.5s ease-out;
 }
 </style>

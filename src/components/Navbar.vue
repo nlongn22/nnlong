@@ -28,20 +28,30 @@
             >
                 <a
                     href="https://drive.google.com/file/d/1If3ThohhVvsp9GnuGNg5i9gDZDlACUJc/view?usp=sharing"
+                    title="View CV"
                     target="_blank"
                 >
                     <file-text-icon size="1.5x" class="icon"></file-text-icon>
                 </a>
                 <a
                     href="https://www.linkedin.com/in/ngoc-long-nguyen-2b0387219/"
+                    title="Go to LinkedIn"
                     target="_blank"
                 >
                     <linkedin-icon size="1.5x" class="icon"></linkedin-icon>
                 </a>
-                <a href="https://github.com/longino22" target="_blank">
+                <a
+                    href="https://github.com/longino22"
+                    title="Go to Github"
+                    target="_blank"
+                >
                     <github-icon size="1.5x" class="icon"></github-icon
                 ></a>
-                <a href="https://www.instagram.com/nlongn22/" target="_blank">
+                <a
+                    href="https://www.instagram.com/nlongn22/"
+                    title="Go to Instagram"
+                    target="_blank"
+                >
                     <instagram-icon size="1.5x" class="icon"></instagram-icon>
                 </a>
             </div>

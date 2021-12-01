@@ -1,13 +1,32 @@
 <template>
     <div class="container">
         <div class="wrapper-left">
-            <img src="@/assets/marketplace/latest.png" v-if="delayEnded" />
+            <a
+                href="https://mechmarket.eu/"
+                title="Go to mechmarket.eu"
+                target="”_blank”"
+                class="image-container"
+                @mouseover="this.showLink = true"
+                @mouseleave="this.showLink = false"
+            >
+                <img
+                    src="@/assets/marketplace/home.png"
+                    class="project-image"
+                    v-if="delayEnded"
+                />
+                <div class="external-link" v-if="showLink">
+                    <external-link-icon size="1.5x"></external-link-icon>
+                </div>
+            </a>
         </div>
         <div class="wrapper-right">
             <div class="wrapper">
                 <div class="header" v-if="isShown">
                     <div>
-                        <a href="https://mechmarket.eu/" target="”_blank”"
+                        <a
+                            href="https://mechmarket.eu/"
+                            title="Go to mechmarket.eu"
+                            target="”_blank”"
                             >MechMarket.eu</a
                         >
                     </div>
@@ -42,7 +61,7 @@
 </template>
 
 <script>
-import { AlignLeftIcon } from "@zhuowenli/vue-feather-icons";
+import { AlignLeftIcon, ExternalLinkIcon } from "@zhuowenli/vue-feather-icons";
 import Scrollbar from "@/components/Scrollbar.vue";
 import Menu from "@/components/Menu.vue";
 import Navigator from "@/components/Navigator.vue";
@@ -50,6 +69,7 @@ export default {
     name: "Marketplace",
     components: {
         AlignLeftIcon,
+        ExternalLinkIcon,
         Scrollbar,
         Menu,
         Navigator,
@@ -66,6 +86,7 @@ export default {
             ],
             isOpened: false,
             isShown: false,
+            showLink: false,
             delayEnded: false,
         };
     },
@@ -99,9 +120,4 @@ export default {
 };
 </script>
 
-<style scoped>
-li {
-    display: list-item;
-    list-style-type: circle;
-}
-</style>
+<style scoped></style>
